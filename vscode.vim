@@ -2,11 +2,17 @@
 "VSCode
 function! s:split(...) abort
     let direction = a:1
-    let file = a:2
-    call VSCodeCall(direction == 'h' ? 'workbench.action.splitEditorDown' : 'workbench.action.splitEditorRight')
-    if file != ''
-        call VSCodeExtensionNotify('open-file', expand(file), 'all')
-    endif
+    " let file = a:2
+	if (direction=='h')||(direction=='l')
+    	call VSCodeCall(direction == 'h' ? 'workbench.action.splitEditorLeft' : 'workbench.action.splitEditorRight')
+	end
+	if (direction=='j')||(direction=='k')
+    	call VSCodeCall(direction == 'j' ? 'workbench.action.splitEditorDown' : 'workbench.action.splitEditorUp')
+	end
+
+    " if file != ''
+    "     call VSCodeExtensionNotify('open-file', expand(file), 'all')
+    " endif
 endfunction
 
 function! s:splitNew(...)
@@ -27,31 +33,31 @@ function! s:manageEditorSize(...)
     endfor
 endfunction
 
-command! -complete=file -nargs=? Split call <SID>split('h', <q-args>)
-command! -complete=file -nargs=? Vsplit call <SID>split('v', <q-args>)
-command! -complete=file -nargs=? New call <SID>split('h', '__vscode_new__')
-command! -complete=file -nargs=? Vnew call <SID>split('v', '__vscode_new__')
+" command! -complete=file -nargs=? Split call <SID>split('h', <q-args>)
+" command! -complete=file -nargs=? Vsplit call <SID>split('v', <q-args>)
+" command! -complete=file -nargs=? New call <SID>split('h', '__vscode_new__')
+" command! -complete=file -nargs=? Vnew call <SID>split('v', '__vscode_new__')
 command! -bang Only if <q-bang> == '!' | call <SID>closeOtherEditors() | else | call VSCodeNotify('workbench.action.joinAllGroups') | endif
 
-nnoremap <silent> <C-w>s :call <SID>split('h')<CR>
-xnoremap <silent> <C-w>s :call <SID>split('h')<CR>
+" nnoremap <silent> <C-w>s :call <SID>split('h')<CR>
+" xnoremap <silent> <C-w>s :call <SID>split('h')<CR>
+" nnoremap <silent> <C-w>v :call <SID>split('v')<CR>
+" xnoremap <silent> <C-w>v :call <SID>split('v')<CR>
+nnoremap <silent> sl :call <SID>split('l')<CR>
+xnoremap <silent> sl :call <SID>split('l')<CR>
+nnoremap <silent> sh :call <SID>split('h')<CR>
+xnoremap <silent> sh :call <SID>split('h')<CR>
+nnoremap <silent> sj :call <SID>split('j')<CR>
+xnoremap <silent> sj :call <SID>split('j')<CR>
+nnoremap <silent> sk :call <SID>split('k')<CR>
+xnoremap <silent> sk :call <SID>split('k')<CR>
 
-nnoremap <silent> <C-w>v :call <SID>split('v')<CR>
-xnoremap <silent> <C-w>v :call <SID>split('v')<CR>
 
-nnoremap <silent> <C-w>n :call <SID>splitNew('h', '__vscode_new__')<CR>
-xnoremap <silent> <C-w>n :call <SID>splitNew('h', '__vscode_new__')<CR>
+" nnoremap <silent> <C-w>= :<C-u>call VSCodeNotify('workbench.action.evenEditorWidths')<CR>
+" xnoremap <silent> <C-w>= :<C-u>call VSCodeNotify('workbench.action.evenEditorWidths')<CR>
 
-
-nnoremap <silent> <C-w>= :<C-u>call VSCodeNotify('workbench.action.evenEditorWidths')<CR>
-xnoremap <silent> <C-w>= :<C-u>call VSCodeNotify('workbench.action.evenEditorWidths')<CR>
-
-nnoremap <silent> <C-w>> :<C-u>call <SID>manageEditorSize(v:count, 'increase')<CR>
-xnoremap <silent> <C-w>> :<C-u>call <SID>manageEditorSize(v:count, 'increase')<CR>
 nnoremap <silent> <C-w>+ :<C-u>call <SID>manageEditorSize(v:count, 'increase')<CR>
 xnoremap <silent> <C-w>+ :<C-u>call <SID>manageEditorSize(v:count, 'increase')<CR>
-nnoremap <silent> <C-w>< :<C-u>call <SID>manageEditorSize(v:count, 'decrease')<CR>
-xnoremap <silent> <C-w>< :<C-u>call <SID>manageEditorSize(v:count, 'decrease')<CR>
 nnoremap <silent> <C-w>- :<C-u>call <SID>manageEditorSize(v:count, 'decrease')<CR>
 xnoremap <silent> <C-w>- :<C-u>call <SID>manageEditorSize(v:count, 'decrease')<CR>
 
@@ -65,11 +71,7 @@ xnoremap <silent> <C-h> :call VSCodeNotify('workbench.action.navigateLeft')<CR>
 nnoremap <silent> <C-l> :call VSCodeNotify('workbench.action.navigateRight')<CR>
 xnoremap <silent> <C-l> :call VSCodeNotify('workbench.action.navigateRight')<CR>
 
-" Bind C-/ to vscode commentary since calling from vscode produces double comments due to multiple cursors
-xnoremap <silent> <C-/> :call Comment()<CR>
-nnoremap <silent> <C-/> :call Comment()<CR>
+" nnoremap <silent> <C-w>_ :<C-u>call VSCodeNotify('workbench.action.toggleEditorWidths')<CR>
 
-nnoremap <silent> <C-w>_ :<C-u>call VSCodeNotify('workbench.action.toggleEditorWidths')<CR>
-
-nnoremap <silent> <Space> :call VSCodeNotify('whichkey.show')<CR>
-xnoremap <silent> <Space> :call VSCodeNotify('whichkey.show')<CR>
+" nnoremap <silent> <Space> :call VSCodeNotify('whichkey.show')<CR>
+" xnoremap <silent> <Space> :call VSCodeNotify('whichkey.show')<CR>

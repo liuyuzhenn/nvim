@@ -5,7 +5,6 @@ source $HOME/AppData/Local/nvim/plug-config.vim
 if exists('g:vscode')
 	source $HOME/AppData/Local/nvim/vscode.vim
 else
-
 endif
 
 

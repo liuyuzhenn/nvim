@@ -1,5 +1,3 @@
-
-nmap mp :MarkdownPreview<CR>
 let g:NERDCreateDefaultMappings = 1
 let g:NERDSpaceDelims = 1
 let g:NERDTreeShowHidden = 1
@@ -31,68 +29,11 @@ let g:snips_author='liuyuzhen'
 let g:snips_email='liuyuzhen22@mails.ucas.ac.cn'
 let g:snips_github='https://github.com/liuyuzhenn'
 
-"
-""ALE
-"
-let g:ale_sign_column_always = 1
-let g:ale_set_highlights = 1
-let g:ale_sign_error = '✗'
-let g:ale_sign_warning = '⚡'
-let g:ale_sign_warning = '!'
-let g:ale_completion_autoimport = 0
-let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
-let g:ale_lint_on_insert_leave = 1
-let g:ale_lint_on_enter = 1
-let g:ale_lint_on_leave = 1
-let g:ale_lint_delay = 200
-let g:ale_lint_on_insert_leave = 1
-let g:ale_lint_on_text_changed = 'always'
-let g:ale_statusline_format = ['✗ %d', '⚡ %d', '✔ OK']
-let g:ale_statusline_format = ['✗ %d', '! %d', '✔ OK']
-let g:ale_linters = {
-\   'c++': ['clang'],
-\   'c': ['clang'],
-\   'python': ['pylint'],
-\}
-" let g:ale_python_pylint_options = "--init-hook='import sys; sys.path.append(\".\")'"
-let g:ale_python_pylint_change_directory=0
 
-" fugitive
-
-" 
-"  "YCM 
-"   "
-
-set completeopt=menu,menuone 
-let g:ycm_clangd_args=['--header-insertion=never'] 
-let g:ycm_enable_diagnostic_signs = 0 
-let g:ycm_enable_diagnostic_highlighting = 0 
-let g:ycm_show_diagnostics_ui = 0 
-let g:ycm_add_preview_to_completeopt = 0 
-let g:ycm_seed_identifiers_with_syntax = 0 
-let g:ycm_semantic_triggers = { 
-\ 'c' : ['->', '.'], 
-\ 'objc' : ['->', '.', 're!\[[_a-zA-Z]+\w*\s', 're!^\s*[^\W\d]\w*\s', 
-\ 're!\[.*\]\s'], 
-\ 'ocaml' : ['.', '#'], 
-\ 'VimspectorPrompt': [ '.', '->', ':', '<' ], 
-\ 'cpp,objcpp' : ['->', '.', '::'], 
-\ 'perl' : ['->'], 
-\ 'php' : ['->', '::'], 
-\ 'cs,java,javascript,typescript,d,python,perl6,scala,vb,elixir,go' : ['.'], 
-\ 'ruby' : ['.', '::'], 
-\ 'lua' : ['.', ':'], 
-\ 'erlang' : [':'], 
-\ 'c,cpp,python,java,go,erlang,perl': ['re!\w{2}'], 
-\ 'cs,lua,javascript': ['re!\w{2}'], 
-\ } 
-highlight PMenu ctermfg=0 ctermbg=242 guifg=black guibg=darkgray 
-highlight PMenuSel ctermfg=242 ctermbg=8 guifg=darkgray guibg=black 
-nnoremap gd :YcmCompleter GoToDefinitionElseDeclaration<CR> 
-nnoremap gr :YcmCompleter GoToReferences<CR>
 
 " EasyMotion
 if !exists('g:vscode')
+	nmap mp :MarkdownPreview<CR>
 	map <space> <Plug>(easymotion-prefix)
 	map  / <Plug>(easymotion-sn)
 	omap / <Plug>(easymotion-tn)
@@ -106,6 +47,114 @@ if !exists('g:vscode')
 	nmap <leader>l <Plug>(easymotion-overwin-line)
 	map  <leader>w <Plug>(easymotion-bd-w)
 	nmap <leader>w <Plug>(easymotion-overwin-w)
+	
+	" COC
+	set nobackup
+	set nowritebackup
+	set updatetime=300
+	set signcolumn=yes
+
+
+	" let g:ale_sign_error = '✗'
+	" let g:ale_sign_warning = '⚡'
+	" highlight CocFloating ctermbg=2 ctermfg=1
+	inoremap <silent><expr> <C-j>
+	      \ coc#pum#visible() ? coc#pum#next(1) :
+	      \ CheckBackspace() ? "\<Tab>" :
+	      \ coc#refresh()
+	inoremap <expr><C-k> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
+	
+	" Make <CR> to accept selected completion item or notify coc.nvim to format
+	" <C-g>u breaks current undo, please make your own choice.
+	inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
+	                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+	
+	function! CheckBackspace() abort
+	  let col = col('.') - 1
+	  return !col || getline('.')[col - 1]  =~# '\s'
+	endfunction
+	
+	" Use <c-space> to trigger completion.
+	if has('nvim')
+	  inoremap <silent><expr> <c-space> coc#refresh()
+	else
+	  inoremap <silent><expr> <c-@> coc#refresh()
+	endif
+	
+	" Use `[g` and `]g` to navigate diagnostics
+	" Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
+	nmap <silent> [g <Plug>(coc-diagnostic-prev)
+	nmap <silent> ]g <Plug>(coc-diagnostic-next)
+	
+	" GoTo code navigation.
+	nmap <silent> gd <Plug>(coc-definition)
+	nmap <silent> gy <Plug>(coc-type-definition)
+	nmap <silent> gi <Plug>(coc-implementation)
+	nmap <silent> gr <Plug>(coc-references)
+	
+	" Use K to show documentation in preview window.
+	nnoremap <silent> K :call ShowDocumentation()<CR>
+
+	function! ShowDocumentation()
+	  if CocAction('hasProvider', 'hover')
+	    call CocActionAsync('doHover')
+	  else
+	    call feedkeys('K', 'in')
+	  endif
+	endfunction
+	
+	" Highlight the symbol and its references when holding the cursor.
+	autocmd CursorHold * silent call CocActionAsync('highlight')
+	
+	" Symbol renaming.
+	nmap <leader>r <Plug>(coc-rename)
+
+	hi CocHintFloat guibg=#AFD787 guifg=#FF7AA3 ctermbg=2 ctermfg=1
+	let g:coc_status_error_sign='✗'
+	let g:coc_status_warning_sign='⚡'
+	
+	"
+	"air-line
+	""
+	let g:airline_theme = 'bubblegum' " deus
+	let g:airline_powerline_fonts = 1
+	let g:airline#extensions#tabline#enabled = 1
+	let g:airline#extensions#tabline#show_tab_nr = 1
+	let g:airline#extensions#tabline#buffer_nr_show = 1
+	let g:airline#extensions#tabline#fnametruncate = 16
+	let g:airline#extensions#tabline#formatter = 'unique_tail'
+	if !exists('airline_symbols')
+			let g:airline_symbols={}
+	endif
+	let laststatus = 2
+	
+	let g:airline_left_sep = ''
+	let g:airline_left_alt_sep = ''
+	let g:airline_right_sep = ''
+	let g:airline_right_alt_sep = ''
+	let g:airline_symbols.branch = ''
+	let g:airline_symbols.colnr = ''
+	let g:airline_symbols.readonly = ''
+	" let g:airline_symbols.linenr = ' :'
+	let g:airline_symbols.linenr = ' '
+	let g:airline_symbols.maxlinenr = ' '
+	let g:airline_symbols.dirty='⚡'
+	" let g:airline_section_z=""
+	let g:airline_section_warning=""
+	
+	nnoremap <leader>m :MaximizerToggle<CR>
+	
+	" Telescope config
+	nnoremap <leader>gf <cmd>Telescope find_files<cr>
+	nnoremap <leader>gg <cmd>Telescope live_grep<cr>
+	nnoremap <leader>gb <cmd>Telescope file_browser<cr>
+	nnoremap <leader>gh <cmd>Telescope help_tags<cr>
+	nnoremap <leader>gd <cmd>Telescope dotfiles<cr>
+	
+
+	lua require('my-dashboard')
+	lua require('my-telescope')
+
 else
 	" nmap <leader>s <Plug>(easymotion-s2)
 	map <space> <Plug>(easymotion-prefix)
@@ -113,49 +162,9 @@ else
 	omap / <Plug>(easymotion-tn)
 	map  n <Plug>(easymotion-next)
 	map  N <Plug>(easymotion-prev)
-	" map  <leader>f <Plug>(easymotion-bd-f)
 	map <leader>s <Plug>(easymotion-bd-f2)
-	" map <leader>l <Plug>(easymotion-bd-jk)
-	" map  <leader>w <Plug>(easymotion-bd-w)
 endif
 
-
-
-"
-"air-line
-""
-let g:airline_theme = 'deus'
-let g:airline_powerline_fonts = 1
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#buffer_nr_show = 1
-let g:airline#extensions#tabline#formatter = 'unique_tail'
-if !exists('airline_symbols')
-		let g:airline_symbols={}
-endif
-let laststatus = 2
-
-" let g:airline_left_sep = ''
-" let g:airline_left_alt_sep = ''
-" let g:airline_right_sep = ''
-" let g:airline_right_alt_sep = ''
-let g:airline_left_sep = ''
-let g:airline_left_alt_sep = ''
-let g:airline_right_sep = ''
-let g:airline_right_alt_sep = ''
-let g:airline_symbols.branch = ''
-let g:airline_symbols.colnr = ''
-let g:airline_symbols.readonly = ''
-" let g:airline_symbols.linenr = ' :'
-let g:airline_symbols.linenr = ' '
-let g:airline_symbols.maxlinenr = ' '
-let g:airline_symbols.dirty='⚡'
-
-" let g:airline_section_z=""
-let g:airline_section_warning=""
-"
-let g:airline#extensions#ale#enabled = 1
-
-nnoremap <leader>m :MaximizerToggle<CR>
 
 " All of your Plugins must be added before the following line 
 " filetype plugin indent on    " required

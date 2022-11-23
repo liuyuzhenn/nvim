@@ -3,6 +3,9 @@ filetype off
 syntax on
 
 let mapleader = "\<space>"
+" change default shell to pwshell
+set shell=pwsh.exe
+set shellcmdflag=-c
 set nowrap
 set nocompatible              " be iMproved, required
 set backspace=indent,eol,start
@@ -28,11 +31,8 @@ set foldminlines=10
 nmap <c-s> xi
 nmap S :w<CR>
 nmap Q :q<CR>
-nmap R :source $MYVIMRC<CR>
 nmap ; :
-" bwitch buffer
-nmap gh :bp<cr>
-nmap gl :bn<cr>
+" switch buffer
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-h> <C-w>h
@@ -49,7 +49,10 @@ nmap th :-tabnext<CR>
 nmap <tab> gt
 
 if !exists('g:vscode')
-	nmap <C-Q> :bd<CR>
+	nmap R :source $MYVIMRC<CR>
+	nmap <A-h> :bp<cr>
+	nmap <A-l> :bn<cr>
+	nmap <A-d> :bd<cr>
 	nnoremap <leader><leader> :tabe<CR>:edit $MYVIMRC<CR>
 endif
 

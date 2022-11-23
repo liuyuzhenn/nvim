@@ -9,8 +9,8 @@ require("telescope").setup {
       mappings = {
         ["i"] = {
           -- your custom insert mode mappings
-	    ["<C-j>"] = "move_selection_next",
-	    ["<C-k>"] = "move_selection_previous"
+		--["<Tab>"] = "move_selection_next",
+		--["<S-Tab>"] = "move_selection_previous"
         },
         ["n"] = {
           -- your custom normal mode mappings
@@ -19,6 +19,11 @@ require("telescope").setup {
     },
   },
 }
+local builtin = require('telescope.builtin')
+vim.keymap.set('n', '<leader>gf', builtin.find_files, {})
+vim.keymap.set('n', '<leader>gg', builtin.live_grep, {})
+vim.keymap.set('n', '<leader>gb', builtin.buffers, {})
+vim.keymap.set('n', '<leader>gh', builtin.help_tags, {})
 -- To get telescope-file-browser loaded and working with telescope,
 -- you need to call load_extension, somewhere after setup function:
 require("telescope").load_extension "file_browser"

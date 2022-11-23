@@ -1,25 +1,3 @@
-let g:NERDCreateDefaultMappings = 1
-let g:NERDSpaceDelims = 1
-let g:NERDTreeShowHidden = 1
-" Use compact syntax for prettified multi-line comments
-let g:NERDCompactSexyComs = 1
-" Align line-wise comment delimiters flush left instead of following code
-" indentation
-let g:NERDDefaultAlign = 'left'
-" Add your own custom formats or override the defaults
-let g:NERDCustomDelimiters = { 'c': { 'left': '/**','right': '*/' } }
- " Allow commenting and inverting empty lines (useful when commenting a region)
-let g:NERDCommentEmptyLines = 1
-" Enable trimming of trailing whitespace when uncommenting
-let g:NERDTrimTrailingWhitespace = 1
-" Enable NERDCommenterToggle to check all selected lines is commented or not
-let g:NERDToggleCheckAllLines = 1
-map <leader>cc <plug>NERDCommenterToggle
-map <leader>u <plug>nerdcommenteruncomment
-" nnoremap <leader>n :NERDTreeFocus<CR>
-nnoremap <C-t> :NERDTreeToggle<CR>
-autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
-" nmap ss :NERDTree<CR>:q<CR>:mksession!<CR>
 
 let g:UltiSnipsSnippetDirectories=['UltiSnips']
 let g:UltiSnipsExpandTrigger='<c-w>'
@@ -30,10 +8,37 @@ let g:snips_email='liuyuzhen22@mails.ucas.ac.cn'
 let g:snips_github='https://github.com/liuyuzhenn'
 
 
-
-" EasyMotion
 if !exists('g:vscode')
-	nmap mp :MarkdownPreview<CR>
+	nmap <F8> :TagbarToggle<CR>
+	let g:tagbar_ctags_bin = 'E:\software\ctags\ctags.exe'
+	let g:tagbar_type_markdown = {
+  \ 'ctagstype'	: 'markdown',
+  \ 'kinds'		: [
+    \ 'c:chapter:0:1',
+    \ 's:section:0:1',
+    \ 'S:subsection:0:1',
+    \ 't:subsubsection:0:1',
+    \ 'T:l4subsection:0:1',
+    \ 'u:l5subsection:0:1',
+  \ ],
+  \ 'sro'			: '""',
+  \ 'kind2scope'	: {
+    \ 'c' : 'chapter',
+    \ 's' : 'section',
+    \ 'S' : 'subsection',
+    \ 't' : 'subsubsection',
+    \ 'T' : 'l4subsection',
+  \ },
+  \ 'scope2kind'	: {
+    \ 'chapter' : 'c',
+    \ 'section' : 's',
+    \ 'subsection' : 'S',
+    \ 'subsubsection' : 't',
+    \ 'l4subsection' : 'T',
+  \ },
+\ }
+
+	nmap <F9> :MarkdownPreview<CR>
 	map <space> <Plug>(easymotion-prefix)
 	map  / <Plug>(easymotion-sn)
 	omap / <Plug>(easymotion-tn)
@@ -53,7 +58,6 @@ if !exists('g:vscode')
 	set nowritebackup
 	set updatetime=300
 	set signcolumn=yes
-
 
 	" let g:ale_sign_error = '✗'
 	" let g:ale_sign_warning = '⚡'
@@ -145,15 +149,28 @@ if !exists('g:vscode')
 	nnoremap <leader>m :MaximizerToggle<CR>
 	
 	" Telescope config
-	nnoremap <leader>gf <cmd>Telescope find_files<cr>
-	nnoremap <leader>gg <cmd>Telescope live_grep<cr>
-	nnoremap <leader>gb <cmd>Telescope file_browser<cr>
-	nnoremap <leader>gh <cmd>Telescope help_tags<cr>
-	nnoremap <leader>gd <cmd>Telescope dotfiles<cr>
-	
+	"nnoremap <leader>gf <cmd>Telescope find_files<cr>
+	"nnoremap <leader>gg <cmd>Telescope live_grep<cr>
+	"nnoremap <leader>gb <cmd>Telescope file_browser<cr>
+	"nnoremap <leader>gh <cmd>Telescope help_tags<cr>
+	"nnoremap <leader>gd <cmd>Telescope dotfiles<cr>
 
-	lua require('my-dashboard')
+	" startify
+	
 	lua require('my-telescope')
+	lua require('my-colorizer')
+	lua require('my-nvtree')
+	lua require('my-toggleterm')
+
+	let g:startify_custom_header=[
+				\ '',
+				\' ███╗   ██╗ ███████╗ ██████╗  ██╗   ██╗ ██╗ ███╗   ███╗',
+				\' ████╗  ██║ ██╔════╝██╔═══██╗ ██║   ██║ ██║ ████╗ ████║',
+				\' ██╔██╗ ██║ █████╗  ██║   ██║ ██║   ██║ ██║ ██╔████╔██║',
+				\' ██║╚██╗██║ ██╔══╝  ██║   ██║ ╚██╗ ██╔╝ ██║ ██║╚██╔╝██║',
+				\' ██║ ╚████║ ███████╗╚██████╔╝  ╚████╔╝  ██║ ██║ ╚═╝ ██║',
+				\' ╚═╝  ╚═══╝ ╚══════╝ ╚═════╝    ╚═══╝   ╚═╝ ╚═╝     ╚═╝',
+				\'                  🌏Hey, there!                        ']
 
 else
 	" nmap <leader>s <Plug>(easymotion-s2)

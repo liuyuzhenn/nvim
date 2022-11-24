@@ -13,8 +13,8 @@ telescope.setup {
       mappings = {
         ["i"] = {
           -- your custom insert mode mappings
-		--["<Tab>"] = "move_selection_next",
-		--["<S-Tab>"] = "move_selection_previous"
+    ["<C-j>"] = "move_selection_next",
+    ["<C-k>"] = "move_selection_previous"
         },
         ["n"] = {
           -- your custom normal mode mappings

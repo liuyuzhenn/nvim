@@ -1,9 +1,10 @@
-source $HOME/AppData/Local/nvim/plugs.vim
-source $HOME/AppData/Local/nvim/general.vim
-source $HOME/AppData/Local/nvim/plug-config.vim
+let g:python3_host_prog = '/user2/liuyuzhen/anaconda3/envs/neovim/bin/python3'
+source ~/.config/nvim/general.vim
+source ~/.config/nvim/plugs.vim
+source ~/.config/nvim/plug-config.vim
 
 if exists('g:vscode')
-	source $HOME/AppData/Local/nvim/vscode.vim
+	source ~/.config/nvim/vscode.vim
 else
 endif
 

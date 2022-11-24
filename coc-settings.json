@@ -1,8 +1,6 @@
 {
 	"diagnostic.errorSign": "✗",
 	"diagnostic.warningSign": "!",
-  	"clangd.path": "~/AppData/Local/coc/extensions/coc-clangd-data\\install\\15.0.3\\clangd_15.0.3/bin/clangd.exe",
-	"suggest.completionItemKindLabels": {
 	    "constructor": "\ufb25",
 	    "keyword": "\uf1de",
 	    "variable": "\ue79b",

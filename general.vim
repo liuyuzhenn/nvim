@@ -1,11 +1,11 @@
-language en
-filetype off
+filetype on
+filetype plugin on
 syntax on
 
 let mapleader = "\<space>"
 " change default shell to pwshell
-set shell=pwsh.exe
-set shellcmdflag=-c
+"set shell=pwsh.exe
+"set shellcmdflag=-c
 set nowrap
 set nocompatible              " be iMproved, required
 set backspace=indent,eol,start
@@ -66,7 +66,6 @@ map <up> :res +3<CR>
 map <down> :res -3<CR>
 map <left> :vertical resize -3<CR>
 map <right> :vertical resize +3<CR>
-map s <nop>
 map J <nop>
 map K <nop>
 map <C-c> <ESC>

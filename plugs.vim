@@ -5,10 +5,9 @@ endfunction
 
 "set rtp+=$VIM/plugs/vim-plug
 
-call plug#begin('$VIM/plugs')
+call plug#begin()
 if !exists('g:vscode')
-	"Plug 'iamcco/markdown-preview.vim'
-	Plug 'neoclide/coc.nvim', {'branch': 'release'}
+	"Plug 'neoclide/coc.nvim', {'branch': 'release'}
 	Plug 'nvim-lua/plenary.nvim'
 	Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.0' }
 	Plug 'easymotion/vim-easymotion'
@@ -19,14 +18,16 @@ if !exists('g:vscode')
 	Plug 'nvim-lualine/lualine.nvim'
 	Plug 'akinsho/toggleterm.nvim', {'tag' : '*'}
 	Plug 'tpope/vim-fugitive'
-	Plug 'lervag/vimtex'
+	"Plug 'lervag/vimtex'
 	Plug 'liuchengxu/vim-clap'
-	Plug 'mhinz/vim-startify'
+	"Plug 'mhinz/vim-startify'
 	Plug 'nvim-tree/nvim-tree.lua'
 	Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 	Plug 'https://github.com/szw/vim-maximizer.git'
 	Plug 'mg979/vim-visual-multi'
-	Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
+	Plug 'mfussenegger/nvim-dap'
+	Plug 'glepnir/dashboard-nvim'
+	"Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 endif
 
 Plug 'asvetliakov/vim-easymotion', Cond(exists('g:vscode'), { 'as': 'vsc-easymotion' })

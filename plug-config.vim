@@ -10,7 +10,7 @@ let g:snips_github='https://github.com/liuyuzhenn'
 
 if !exists('g:vscode')
 	nmap <F8> :TagbarToggle<CR>
-	let g:tagbar_ctags_bin = 'E:\software\ctags\ctags.exe'
+	"let g:tagbar_ctags_bin = 'E:\software\ctags\ctags.exe'
 	let g:tagbar_type_markdown = {
   \ 'ctagstype'	: 'markdown',
   \ 'kinds'		: [
@@ -63,66 +63,64 @@ if !exists('g:vscode')
 	set updatetime=300
 	set signcolumn=yes
 
-	" highlight CocFloating ctermbg=2 ctermfg=1
-	inoremap <silent><expr> <C-j>
-	      \ coc#pum#visible() ? coc#pum#next(0) : "\<C-j>"
-		  "\ CheckBackspace() ? "\<Tab>" :
-		  "\ coc#refresh()
-	inoremap <expr><C-k> coc#pum#visible() ? coc#pum#prev(0) : "\<C-k>"
+	"" highlight CocFloating ctermbg=2 ctermfg=1
+	"inoremap <silent><expr> <C-j>
+		  "\ coc#pum#visible() ? coc#pum#next(0) : "\<C-j>"
+		  ""\ CheckBackspace() ? "\<Tab>" :
+		  ""\ coc#refresh()
+	"inoremap <expr><C-k> coc#pum#visible() ? coc#pum#prev(0) : "\<C-k>"
 	
-	" use Tab to trigger completion
-	inoremap <silent><expr> <Tab> coc#pum#visible() ? coc#pum#confirm() : "\<Tab>"
+	"" use Tab to trigger completion
+	"inoremap <silent><expr> <Tab> coc#pum#visible() ? coc#pum#confirm() : "\<Tab>"
 	
-	function! CheckBackspace() abort
-	  let col = col('.') - 1
-	  return !col || getline('.')[col - 1]  =~# '\s'
-	endfunction
-	hi CocMenuSel ctermbg=237 guibg=#13354A
+	"function! CheckBackspace() abort
+	  "let col = col('.') - 1
+	  "return !col || getline('.')[col - 1]  =~# '\s'
+	"endfunction
+	"hi CocMenuSel ctermbg=237 guibg=#13354A
 	
-	" Use <c-space> to trigger completion.
-	if has('nvim')
-	  inoremap <silent><expr> <c-space> coc#refresh()
-	else
-	  inoremap <silent><expr> <c-@> coc#refresh()
-	endif
+	"" Use <c-space> to trigger completion.
+	"if has('nvim')
+	  "inoremap <silent><expr> <c-space> coc#refresh()
+	"else
+	  "inoremap <silent><expr> <c-@> coc#refresh()
+	"endif
 	
-	" Use `[g` and `]g` to navigate diagnostics
-	" Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
-	nmap <silent> [g <Plug>(coc-diagnostic-prev)
-	nmap <silent> ]g <Plug>(coc-diagnostic-next)
+	"" Use `[g` and `]g` to navigate diagnostics
+	"" Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
+	"nmap <silent> [g <Plug>(coc-diagnostic-prev)
+	"nmap <silent> ]g <Plug>(coc-diagnostic-next)
 	
-	" GoTo code navigation.
-	nmap <silent> gd <Plug>(coc-definition)
-	nmap <silent> gy <Plug>(coc-type-definition)
-	nmap <silent> gi <Plug>(coc-implementation)
-	nmap <silent> gr <Plug>(coc-references)
+	"" GoTo code navigation.
+	"nmap <silent> gd <Plug>(coc-definition)
+	"nmap <silent> gy <Plug>(coc-type-definition)
+	"nmap <silent> gi <Plug>(coc-implementation)
+	"nmap <silent> gr <Plug>(coc-references)
 	
-	" Use K to show documentation in preview window.
-	nnoremap <silent> K :call ShowDocumentation()<CR>
+	"" Use K to show documentation in preview window.
+	"nnoremap <silent> K :call ShowDocumentation()<CR>
 	
-	function! ShowDocumentation()
-	  if CocAction('hasProvider', 'hover')
-	    call CocActionAsync('doHover')
-	  else
-	    call feedkeys('K', 'in')
-	  endif
-	endfunction
+	"function! ShowDocumentation()
+	  "if CocAction('hasProvider', 'hover')
+		"call CocActionAsync('doHover')
+	  "else
+		"call feedkeys('K', 'in')
+	  "endif
+	"endfunction
 	
-	" Highlight the symbol and its references when holding the cursor.
-	autocmd CursorHold * silent call CocActionAsync('highlight')
+	"" Highlight the symbol and its references when holding the cursor.
+	"autocmd CursorHold * silent call CocActionAsync('highlight')
 	
-	" Symbol renaming.
-	nmap <leader>r <Plug>(coc-rename)
+	"" Symbol renaming.
+	"nmap <leader>r <Plug>(coc-rename)
 
-	hi CocHintFloat guibg=#AFD787 guifg=#FF7AA3 ctermbg=2 ctermfg=1
-	let g:coc_status_error_sign='✗'
-	let g:coc_status_warning_sign='⚡'
+	"hi CocHintFloat guibg=#AFD787 guifg=#FF7AA3 ctermbg=2 ctermfg=1
+	"let g:coc_status_error_sign='✗'
+	"let g:coc_status_warning_sign='⚡'
 	
-
 	nnoremap <leader>m :MaximizerToggle<CR>
 
-
-	" startify
+	hi DashboardHeader guifg=1 guibg=3 
 	
 	lua require('user.telescope')
 	lua require('user.colorizer')
@@ -134,16 +132,8 @@ if !exists('g:vscode')
 	lua require('user.surround')
 	lua require('user.markdown-preview')
 	lua require('user.nvim-dap')
+	lua require('user.dashboard')
 
-	let g:startify_custom_header=[
-				\ '',
-				\' ███╗   ██╗ ███████╗ ██████╗  ██╗   ██╗ ██╗ ███╗   ███╗',
-				\' ████╗  ██║ ██╔════╝██╔═══██╗ ██║   ██║ ██║ ████╗ ████║',
-				\' ██╔██╗ ██║ █████╗  ██║   ██║ ██║   ██║ ██║ ██╔████╔██║',
-				\' ██║╚██╗██║ ██╔══╝  ██║   ██║ ╚██╗ ██╔╝ ██║ ██║╚██╔╝██║',
-				\' ██║ ╚████║ ███████╗╚██████╔╝  ╚████╔╝  ██║ ██║ ╚═╝ ██║',
-				\' ╚═╝  ╚═══╝ ╚══════╝ ╚═════╝    ╚═══╝   ╚═╝ ╚═╝     ╚═╝',
-				\'                  🌏Hey, there!                        ']
 
 else
 	" nmap <leader>s <Plug>(easymotion-s2)

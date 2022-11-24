@@ -68,7 +68,7 @@ lualine.setup {
 	disabled_filetypes = {
         statusline = {
           "startify",
-          "dashboard",
+          --"dashboard",
           "packer",
           "neogitstatus",
           "NvimTree",
@@ -79,19 +79,6 @@ lualine.setup {
           "spectre_panel",
           "toggleterm",
 		},
-        winbar = {
-          "startify",
-          "dashboard",
-          "packer",
-          "neogitstatus",
-          "NvimTree",
-          "Trouble",
-          "alpha",
-          "lir",
-          "Outline",
-          "spectre_panel",
-          "toggleterm",
-        },
       },
     ignore_focus = {},
     always_divide_middle = true,
@@ -99,12 +86,11 @@ lualine.setup {
     refresh = {
       statusline = 1000,
       tabline = 1000,
-      winbar = 1000,
     }
   },
   sections = {
     lualine_a = { mode },
-    lualine_b = { branch, diagnostics_bw },
+    lualine_b = { branch, diagnostics },
     lualine_c = { "filename" },
     -- lualine_x = { "encoding", "fileformat", "filetype" },
     lualine_x = { diff, filetype, "encoding" },
@@ -120,21 +106,5 @@ lualine.setup {
     lualine_z = {},
   },
   tabline = {},
-    winbar = {
-      lualine_a = {diagnostics},
-      lualine_b = {},
-      lualine_c = {},
-      lualine_x = {},
-      lualine_y = {},
-      lualine_z = {},
-    },
-    inactive_winbar = {
-      lualine_a = {},
-      lualine_b = {},
-      lualine_c = {},
-      lualine_x = {},
-      lualine_y = {},
-      lualine_z = {},
-    },
     extensions = { "nvim-tree", "toggleterm", "quickfix" },
 }

@@ -38,10 +38,10 @@ if !exists('g:vscode')
   \ },
 \ }
 
-    nmap <silent> <F9> <Plug>MarkdownPreview        " 普通模式
-    imap <silent> <F9> <Plug>MarkdownPreview        " 插入模式
-    nmap <silent> <F10> <Plug>StopMarkdownPreview    " 普通模式
-    imap <silent> <F10> <Plug>StopMarkdownPreview    " 插入模式
+    "nmap <silent> <F9> <Plug>MarkdownPreview        
+    "imap <silent> <F9> <Plug>MarkdownPreview        
+    "nmap <silent> <F10> <Plug>StopMarkdownPreview    
+    "imap <silent> <F10> <Plug>StopMarkdownPreview    
 
 	map <space> <Plug>(easymotion-prefix)
 	map  / <Plug>(easymotion-sn)
@@ -132,7 +132,8 @@ if !exists('g:vscode')
 	lua require('user.treesitter')
 	lua require('user.vimtex')
 	lua require('user.surround')
-	lua require('user.which-key')
+	lua require('user.markdown-preview')
+	lua require('user.nvim-dap')
 
 	let g:startify_custom_header=[
 				\ '',

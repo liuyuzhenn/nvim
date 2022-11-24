@@ -3,11 +3,11 @@ function! Cond(cond, ...)
   return a:cond ? opts : extend(opts, { 'on': [], 'for': [] })
 endfunction
 
-set rtp+=$VIM/plugs/vim-plug
+"set rtp+=$VIM/plugs/vim-plug
 
 call plug#begin('$VIM/plugs')
 if !exists('g:vscode')
-	Plug 'iamcco/markdown-preview.vim'
+	"Plug 'iamcco/markdown-preview.vim'
 	Plug 'neoclide/coc.nvim', {'branch': 'release'}
 	Plug 'nvim-lua/plenary.nvim'
 	Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.0' }
@@ -26,6 +26,7 @@ if !exists('g:vscode')
 	Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 	Plug 'https://github.com/szw/vim-maximizer.git'
 	Plug 'mg979/vim-visual-multi'
+	Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 endif
 
 Plug 'asvetliakov/vim-easymotion', Cond(exists('g:vscode'), { 'as': 'vsc-easymotion' })

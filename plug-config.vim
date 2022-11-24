@@ -38,7 +38,11 @@ if !exists('g:vscode')
   \ },
 \ }
 
-	nmap <F9> :MarkdownPreview<CR>
+    nmap <silent> <F9> <Plug>MarkdownPreview        " 普通模式
+    imap <silent> <F9> <Plug>MarkdownPreview        " 插入模式
+    nmap <silent> <F10> <Plug>StopMarkdownPreview    " 普通模式
+    imap <silent> <F10> <Plug>StopMarkdownPreview    " 插入模式
+
 	map <space> <Plug>(easymotion-prefix)
 	map  / <Plug>(easymotion-sn)
 	omap / <Plug>(easymotion-tn)
@@ -59,24 +63,21 @@ if !exists('g:vscode')
 	set updatetime=300
 	set signcolumn=yes
 
-	" let g:ale_sign_error = '✗'
-	" let g:ale_sign_warning = '⚡'
 	" highlight CocFloating ctermbg=2 ctermfg=1
 	inoremap <silent><expr> <C-j>
-	      \ coc#pum#visible() ? coc#pum#next(1) :
-	      \ CheckBackspace() ? "\<Tab>" :
-	      \ coc#refresh()
-	inoremap <expr><C-k> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
+	      \ coc#pum#visible() ? coc#pum#next(0) : "\<C-j>"
+		  "\ CheckBackspace() ? "\<Tab>" :
+		  "\ coc#refresh()
+	inoremap <expr><C-k> coc#pum#visible() ? coc#pum#prev(0) : "\<C-k>"
 	
-	" Make <CR> to accept selected completion item or notify coc.nvim to format
-	" <C-g>u breaks current undo, please make your own choice.
-	inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
-	                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+	" use Tab to trigger completion
+	inoremap <silent><expr> <Tab> coc#pum#visible() ? coc#pum#confirm() : "\<Tab>"
 	
 	function! CheckBackspace() abort
 	  let col = col('.') - 1
 	  return !col || getline('.')[col - 1]  =~# '\s'
 	endfunction
+	hi CocMenuSel ctermbg=237 guibg=#13354A
 	
 	" Use <c-space> to trigger completion.
 	if has('nvim')
@@ -98,7 +99,7 @@ if !exists('g:vscode')
 	
 	" Use K to show documentation in preview window.
 	nnoremap <silent> K :call ShowDocumentation()<CR>
-
+	
 	function! ShowDocumentation()
 	  if CocAction('hasProvider', 'hover')
 	    call CocActionAsync('doHover')
@@ -117,50 +118,21 @@ if !exists('g:vscode')
 	let g:coc_status_error_sign='✗'
 	let g:coc_status_warning_sign='⚡'
 	
-	"
-	"air-line
-	""
-	let g:airline_theme = 'bubblegum' " deus
-	let g:airline_powerline_fonts = 1
-	let g:airline#extensions#tabline#enabled = 1
-	let g:airline#extensions#tabline#show_tab_nr = 1
-	let g:airline#extensions#tabline#buffer_nr_show = 1
-	let g:airline#extensions#tabline#fnametruncate = 16
-	let g:airline#extensions#tabline#formatter = 'unique_tail'
-	if !exists('airline_symbols')
-			let g:airline_symbols={}
-	endif
-	let laststatus = 2
-	
-	let g:airline_left_sep = ''
-	let g:airline_left_alt_sep = ''
-	let g:airline_right_sep = ''
-	let g:airline_right_alt_sep = ''
-	let g:airline_symbols.branch = ''
-	let g:airline_symbols.colnr = ''
-	let g:airline_symbols.readonly = ''
-	" let g:airline_symbols.linenr = ' :'
-	let g:airline_symbols.linenr = ' '
-	let g:airline_symbols.maxlinenr = ' '
-	let g:airline_symbols.dirty='⚡'
-	" let g:airline_section_z=""
-	let g:airline_section_warning=""
-	
+
 	nnoremap <leader>m :MaximizerToggle<CR>
-	
-	" Telescope config
-	"nnoremap <leader>gf <cmd>Telescope find_files<cr>
-	"nnoremap <leader>gg <cmd>Telescope live_grep<cr>
-	"nnoremap <leader>gb <cmd>Telescope file_browser<cr>
-	"nnoremap <leader>gh <cmd>Telescope help_tags<cr>
-	"nnoremap <leader>gd <cmd>Telescope dotfiles<cr>
+
 
 	" startify
 	
-	lua require('my-telescope')
-	lua require('my-colorizer')
-	lua require('my-nvtree')
-	lua require('my-toggleterm')
+	lua require('user.telescope')
+	lua require('user.colorizer')
+	lua require('user.nvtree')
+	lua require('user.toggleterm')
+	lua require('user.lualine')
+	lua require('user.treesitter')
+	lua require('user.vimtex')
+	lua require('user.surround')
+	lua require('user.which-key')
 
 	let g:startify_custom_header=[
 				\ '',

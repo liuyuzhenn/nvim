@@ -22,10 +22,10 @@ set tabstop=4
 set mouse=r
 set encoding=utf-8
 set shiftwidth=4
-set fdm=indent
-set foldmethod=manual
+set foldmethod=indent
 set foldlevel=9999
 set foldminlines=10
+set nobackup
 
 " NORMAL MODE
 nmap <c-s> xi

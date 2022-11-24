@@ -1,3 +1,9 @@
+local status_ok, toggleterm = pcall(require, "toggleterm")
+if not status_ok then
+  return
+end
+
+
 local powershell_options = {
   shell = vim.fn.executable "pwsh" and "pwsh" or "powershell",
   shellcmdflag = "-NoLogo -NoProfile -ExecutionPolicy RemoteSigned -Command [Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.Encoding]::UTF8;",
@@ -11,7 +17,7 @@ for option, value in pairs(powershell_options) do
   vim.opt[option] = value
 end
 
-require("toggleterm").setup{
+toggleterm.setup{
   -- size can be a number or function which is passed the current terminal
   	size = function(term)
     if term.direction == "horizontal" then

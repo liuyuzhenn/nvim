@@ -11,29 +11,29 @@ if !exists('g:vscode')
 	Plug 'neoclide/coc.nvim', {'branch': 'release'}
 	Plug 'nvim-lua/plenary.nvim'
 	Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.0' }
-	Plug 'vim-airline/vim-airline'
-	Plug 'vim-airline/vim-airline-themes'
-	"Plug 'glepnir/dashboard-nvim'
 	Plug 'easymotion/vim-easymotion'
 	Plug 'nvim-telescope/telescope-file-browser.nvim'
 	Plug 'preservim/tagbar'
 	Plug 'norcalli/nvim-colorizer.lua'
- 	Plug 'nvim-tree/nvim-web-devicons' " optional, for file icons
-	Plug 'nvim-tree/nvim-tree.lua'
+ 	Plug 'nvim-tree/nvim-web-devicons' 
+	Plug 'nvim-lualine/lualine.nvim'
 	Plug 'akinsho/toggleterm.nvim', {'tag' : '*'}
 	Plug 'tpope/vim-fugitive'
+	Plug 'lervag/vimtex'
 	Plug 'liuchengxu/vim-clap'
 	Plug 'mhinz/vim-startify'
+	Plug 'nvim-tree/nvim-tree.lua'
+	Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+	Plug 'https://github.com/szw/vim-maximizer.git'
+	Plug 'mg979/vim-visual-multi'
 endif
 
 Plug 'asvetliakov/vim-easymotion', Cond(exists('g:vscode'), { 'as': 'vsc-easymotion' })
-Plug 'mg979/vim-visual-multi'
-Plug 'tpope/vim-surround'
 Plug 'preservim/nerdcommenter'
 Plug 'gcmt/wildfire.vim'
-"Plug 'https://github.com/SirVer/ultisnips.git'
+Plug 'tpope/vim-surround'
+Plug 'https://github.com/SirVer/ultisnips.git'
 Plug 'https://github.com/honza/vim-snippets.git'
-Plug 'https://github.com/szw/vim-maximizer.git'
 
 call plug#end()            " required
 

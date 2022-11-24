@@ -54,6 +54,7 @@ if !exists('g:vscode')
 	nmap <A-l> :bn<cr>
 	nmap <A-d> :bd<cr>
 	nnoremap <leader><leader> :tabe<CR>:edit $MYVIMRC<CR>
+else
 endif
 
 " INSERT MODE
@@ -66,7 +67,6 @@ map <up> :res +3<CR>
 map <down> :res -3<CR>
 map <left> :vertical resize -3<CR>
 map <right> :vertical resize +3<CR>
-map s <nop>
 map J <nop>
 map K <nop>
 map <C-c> <ESC>

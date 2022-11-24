@@ -134,6 +134,7 @@ if !exists('g:vscode')
 	lua require('user.surround')
 	lua require('user.markdown-preview')
 	lua require('user.nvim-dap')
+	lua require('user.dashboard')
 
 	let g:startify_custom_header=[
 				\ '',

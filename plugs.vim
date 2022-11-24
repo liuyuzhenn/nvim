@@ -21,11 +21,13 @@ if !exists('g:vscode')
 	Plug 'tpope/vim-fugitive'
 	Plug 'lervag/vimtex'
 	Plug 'liuchengxu/vim-clap'
-	Plug 'mhinz/vim-startify'
+	"Plug 'mhinz/vim-startify'
 	Plug 'nvim-tree/nvim-tree.lua'
+	Plug 'glepnir/dashboard-nvim'
 	Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 	Plug 'https://github.com/szw/vim-maximizer.git'
 	Plug 'mg979/vim-visual-multi'
+	Plug 'mfussenegger/nvim-dap'
 	Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 endif
 

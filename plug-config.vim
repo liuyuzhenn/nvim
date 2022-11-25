@@ -40,19 +40,6 @@ if !exists('g:vscode')
 \ }
 
 
-	map <space> <Plug>(easymotion-prefix)
-	map  / <Plug>(easymotion-sn)
-	omap / <Plug>(easymotion-tn)
-	map  n <Plug>(easymotion-next)
-	map  N <Plug>(easymotion-prev)
-	map  <leader>f <Plug>(easymotion-bd-f)
-	nmap <leader>f <Plug>(easymotion-overwin-f)
-	map <leader>s <Plug>(easymotion-bd-f2)
-	nmap <leader>s <Plug>(easymotion-overwin-f2)
-	map <leader>l <Plug>(easymotion-bd-jk)
-	nmap <leader>l <Plug>(easymotion-overwin-line)
-	map  <leader>w <Plug>(easymotion-bd-w)
-	nmap <leader>w <Plug>(easymotion-overwin-w)
 	
 	" COC
 	set nobackup
@@ -115,24 +102,10 @@ if !exists('g:vscode')
 	let g:coc_status_error_sign='✗'
 	let g:coc_status_warning_sign='⚡'
 	
-
-	nnoremap <leader>m :MaximizerToggle<CR>
-
+	"nnoremap <leader>m :MaximizerToggle<CR>
 
 	" startify
 	
-	lua require('user.telescope')
-	lua require('user.colorizer')
-	lua require('user.nvtree')
-	lua require('user.toggleterm')
-	lua require('user.lualine')
-	lua require('user.treesitter')
-	lua require('user.vimtex')
-	lua require('user.surround')
-	lua require('user.markdown-preview')
-	lua require('user.nvim-dap')
-	lua require('user.nvim-dap-ui')
-	lua require('user.dashboard')
 
 	let g:startify_custom_header=[
 				\ '',
@@ -146,14 +119,28 @@ if !exists('g:vscode')
 
 else
 	" nmap <leader>s <Plug>(easymotion-s2)
-	map <space> <Plug>(easymotion-prefix)
-	map  / <Plug>(easymotion-sn)
-	omap / <Plug>(easymotion-tn)
-	map  n <Plug>(easymotion-next)
-	map  N <Plug>(easymotion-prev)
-	map <leader>s <Plug>(easymotion-bd-f2)
+	"map <space> <Plug>(easymotion-prefix)
+	"map  / <Plug>(easymotion-sn)
+	"omap / <Plug>(easymotion-tn)
+	"map  n <Plug>(easymotion-next)
+	"map  N <Plug>(easymotion-prev)
+	"map <leader>s <Plug>(easymotion-bd-f2)
 endif
 
+lua require('user.telescope')
+lua require('user.colorizer')
+lua require('user.nvtree')
+lua require('user.toggleterm')
+lua require('user.lualine')
+lua require('user.treesitter')
+lua require('user.vimtex')
+lua require('user.markdown-preview')
+lua require('user.nvim-dap')
+lua require('user.nvim-dap-ui')
+lua require('user.dashboard')
+"lua require('user.easymotion')
+lua require('user.hop')
+lua require('user.surround')
 
 " All of your Plugins must be added before the following line 
 " filetype plugin indent on    " required

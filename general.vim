@@ -1,11 +1,9 @@
 language en
 "syntax on
-
 let mapleader = "\<space>"
 " change default shell to pwshell
 set shell=pwsh.exe
 set shellcmdflag=-c
-set nowrap
 set nocompatible              " be iMproved, required
 set backspace=indent,eol,start
 colorscheme deus
@@ -58,10 +56,10 @@ else
 endif
 
 " INSERT MODE
-inoremap <C-h> <Left>
-inoremap <C-j> <Down>
-inoremap <C-k> <Up>
-inoremap <C-l> <Right>
+"inoremap <C-h> <Left>
+"inoremap <C-j> <Down>
+"inoremap <C-k> <Up>
+"inoremap <C-l> <Right>
 
 map <up> :res +3<CR>
 map <down> :res -3<CR>

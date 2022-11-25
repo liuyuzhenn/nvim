@@ -12,7 +12,7 @@ vim.opt.termguicolors = true
 
 -- OR setup with some options
 nvim_tree.setup({
-	auto_reload_on_write = true,
+	auto_reload_on_write = false,
 	update_cwd = true,
   diagnostics = {
     enable = true,
@@ -32,11 +32,11 @@ nvim_tree.setup({
   view = {
 	width=25,
 	adaptive_size = true,
+	hide_root_folder = false,
     mappings = {
       list = {
         { key = "u", action = "dir_up" },
         { key = {"v", "gs"}, action = "vsplit" },
-        { key = "gx", action = "split" },
         { key = "gt", action = "tabnew" },
       },
     },
@@ -50,9 +50,9 @@ nvim_tree.setup({
     indent_markers = {
       enable = false,
       icons = {
-        corner = "└ ",
-        edge = "│ ",
-        none = "  ",
+        corner = "└",
+        edge = "│",
+        none = " ",
       },
     },
     root_folder_modifier = ':t',
@@ -85,12 +85,33 @@ nvim_tree.setup({
           empty_open = "",
           symlink = "",
         }
-      }
+      },
     },
   },
   filters = {
+	  custom = { "node_modules", "\\.cache" },
 	  dotfiles=false,
   },
+  actions = {
+        use_system_clipboard = true,
+        change_dir = {
+          enable = true,
+          global = false,
+          restrict_above_cwd = false,
+        },
+        open_file = {
+          quit_on_open = false,
+          resize_window = false,
+          window_picker = {
+            enable = true,
+            chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890",
+            exclude = {
+              filetype = { "notify", "packer", "qf", "diff", "fugitive", "fugitiveblame" },
+              buftype = { "nofile", "terminal", "help" },
+            },
+          },
+        },
+      },
 })
 
 local map = vim.api.nvim_set_keymap

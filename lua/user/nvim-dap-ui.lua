@@ -61,13 +61,21 @@ dapui.setup({
     },
     {
       elements = {
-        "repl",
-        --"console",
+		{ id = "repl", size = 0.45 },
+        { id = "console", size = 0.55 },
       },
       size = 0.25, -- 25% of total lines
       position = "bottom",
     },
   },
+  floating = {
+	max_height = 0.9,
+    max_width = 0.5, -- Floats will be treated as percentage of your screen.
+    border = vim.g.border_chars, -- Border style. Can be 'single', 'double' or 'rounded'
+    mappings = {
+        close = { "q", "<Esc>" },
+    },
+	},
   controls = {
     -- Requires Neovim nightly (or 0.8 when released)
     enabled = true,
@@ -100,6 +108,7 @@ dapui.setup({
 })
 
 vim.cmd[[
-	vnoremap <leader>di <Cmd>lua require("dapui").eval()<CR>
+	vnoremap <F3> <Cmd>lua require("dapui").eval()<CR>
+	nnoremap <F3> <Cmd>lua require("dapui").eval()<CR>
 	nnoremap <leader>dp <Cmd>lua require("dapui").toggle()<CR>
 ]]

@@ -10,7 +10,8 @@ if !exists('g:vscode')
 	Plug 'neoclide/coc.nvim', {'branch': 'release'}
 	Plug 'nvim-lua/plenary.nvim'
 	Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.0' }
-	Plug 'easymotion/vim-easymotion'
+	"Plug 'easymotion/vim-easymotion'
+	Plug 'phaazon/hop.nvim'
 	Plug 'nvim-telescope/telescope-file-browser.nvim'
 	Plug 'preservim/tagbar'
 	Plug 'norcalli/nvim-colorizer.lua'
@@ -23,7 +24,7 @@ if !exists('g:vscode')
 	Plug 'nvim-tree/nvim-tree.lua'
 	Plug 'glepnir/dashboard-nvim'
 	Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-	Plug 'https://github.com/szw/vim-maximizer.git'
+	"Plug 'https://github.com/szw/vim-maximizer.git'
 	Plug 'mg979/vim-visual-multi'
 	Plug 'mfussenegger/nvim-dap'
 	Plug 'mfussenegger/nvim-dap-python'

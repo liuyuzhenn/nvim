@@ -8,29 +8,29 @@ end
 
 dap.adapters.python = {
   type = 'executable';
-  command = 'E:/software/anaconda/python.exe';
+  command = os.getenv('CONDA_PREFIX') .. '/python.exe';
   args = { '-m', 'debugpy.adapter' };
 }
 
-dap.defaults.fallback.terminal_win_cmd = 'split new'
-dap.defaults.fallback.focus_terminal = true
+--dap.defaults.fallback.terminal_win_cmd = 'split new'
+--dap.defaults.fallback.focus_terminal = true
 
 dap.configurations.python = {
   {
+	-- Options below are for debugpy, see https://github.com/microsoft/debugpy/wiki/Debug-configuration-settings for supported options
 	-- The first three options are required by nvim-dap
 	type = 'python'; -- the type here established the link to the adapter definition: `dap.adapters.python`
 	request = 'launch';
 	name = "Launch file";
-
-	-- Options below are for debugpy, see https://github.com/microsoft/debugpy/wiki/Debug-configuration-settings for supported options
-
+	console = "integratedTerminal";
 	program = "${file}"; -- This configuration will launch the current file if used.
-	pythonPath = "${env:CONDA_PYTHON_EXE}";
+	pythonPath = os.getenv('CONDA_PREFIX') .. '/python.exe';
   },
 }
 
 vim.cmd[[
-    nnoremap <silent> <F5> <Cmd>lua require'dap'.continue()<CR>
+    nnoremap <silent> <F1> <Cmd>lua require'dap'.continue()<CR>
+    nnoremap <silent> <F2> <Cmd>lua require'dap'.terminate()<CR>
     nnoremap <silent> <A-1> <Cmd>lua require'dap'.step_into()<CR>
     nnoremap <silent> <A-2> <Cmd>lua require'dap'.step_over()<CR>
     nnoremap <silent> <A-3> <Cmd>lua require'dap'.step_out()<CR>

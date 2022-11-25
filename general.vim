@@ -1,6 +1,5 @@
 language en
-filetype off
-syntax on
+"syntax on
 
 let mapleader = "\<space>"
 " change default shell to pwshell
@@ -19,13 +18,14 @@ set nu
 set cursorline
 set relativenumber
 set tabstop=4
-set mouse=r
+set mouse=a
 set encoding=utf-8
 set shiftwidth=4
 set foldmethod=indent
 set foldlevel=9999
 set foldminlines=10
 set nobackup
+autocmd FileType markdown,tex,plaintex setlocal wrap 
 
 " NORMAL MODE
 nmap <c-s> xi

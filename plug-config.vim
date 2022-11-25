@@ -9,7 +9,8 @@ let g:snips_github='https://github.com/liuyuzhenn'
 
 
 if !exists('g:vscode')
-	nmap <F8> :TagbarToggle<CR>
+	nmap <silent><F8> <Cmd>TagbarToggle<CR>
+	imap <silent><F8> <Cmd>TagbarToggle<CR>
 	let g:tagbar_ctags_bin = 'E:\software\ctags\ctags.exe'
 	let g:tagbar_type_markdown = {
   \ 'ctagstype'	: 'markdown',
@@ -38,10 +39,6 @@ if !exists('g:vscode')
   \ },
 \ }
 
-    "nmap <silent> <F9> <Plug>MarkdownPreview        
-    "imap <silent> <F9> <Plug>MarkdownPreview        
-    "nmap <silent> <F10> <Plug>StopMarkdownPreview    
-    "imap <silent> <F10> <Plug>StopMarkdownPreview    
 
 	map <space> <Plug>(easymotion-prefix)
 	map  / <Plug>(easymotion-sn)
@@ -88,8 +85,8 @@ if !exists('g:vscode')
 	
 	" Use `[g` and `]g` to navigate diagnostics
 	" Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
-	nmap <silent> [g <Plug>(coc-diagnostic-prev)
-	nmap <silent> ]g <Plug>(coc-diagnostic-next)
+	nmap <silent> g[ <Plug>(coc-diagnostic-prev)
+	nmap <silent> g] <Plug>(coc-diagnostic-next)
 	
 	" GoTo code navigation.
 	nmap <silent> gd <Plug>(coc-definition)
@@ -114,7 +111,7 @@ if !exists('g:vscode')
 	" Symbol renaming.
 	nmap <leader>r <Plug>(coc-rename)
 
-	hi CocHintFloat guibg=#AFD787 guifg=#FF7AA3 ctermbg=2 ctermfg=1
+	"hi CocHintFloat guibg=#AFD787 guifg=#FF7AA3 ctermbg=2 ctermfg=1
 	let g:coc_status_error_sign='✗'
 	let g:coc_status_warning_sign='⚡'
 	
@@ -134,6 +131,7 @@ if !exists('g:vscode')
 	lua require('user.surround')
 	lua require('user.markdown-preview')
 	lua require('user.nvim-dap')
+	lua require('user.nvim-dap-ui')
 	lua require('user.dashboard')
 
 	let g:startify_custom_header=[

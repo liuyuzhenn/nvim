@@ -67,6 +67,12 @@ lualine.setup {
 	section_separators = { left = '', right = ''},
 	disabled_filetypes = {
         statusline = {
+		  --"dapui_watches",
+		  --"dapui_stacks",
+		  --"dapui_breakpoints",
+		  --"dapui_scopes",
+		  --"dapui_console",
+		  --"dap-repl",
           "startify",
           "dashboard",
           "packer",
@@ -80,6 +86,12 @@ lualine.setup {
           "toggleterm",
 		},
         winbar = {
+		  "dapui_watches",
+		  "dapui_stacks",
+		  "dapui_breakpoints",
+		  "dapui_scopes",
+		  "dapui_console",
+		  "dap-repl",
           "startify",
           "dashboard",
           "packer",

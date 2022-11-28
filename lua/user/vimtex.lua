@@ -16,3 +16,4 @@ vim.cmd [[
 	--\ . ':execute ''drop '' . fnameescape(''\%f'')^<CR^>'
 	--\ . ':\%l^<CR^>:normal\! zzzv^<CR^>'
 	--\ . ':call remote_foreground('''.v:servername.''')^<CR^>^<CR^>\""'
+

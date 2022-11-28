@@ -1,40 +1,44 @@
+filetype plugin indent on    " required
 language en
-"syntax on
 let mapleader = "\<space>"
 " change default shell to pwshell
-set shell=pwsh.exe
-set shellcmdflag=-c
+"set shell=pwsh.exe
+"set shellcmdflag=-c
 set nocompatible              " be iMproved, required
 set backspace=indent,eol,start
-colorscheme deus
-let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 set showcmd
 set termguicolors
 set background=dark
 set nu
 set cursorline
 set relativenumber
-set tabstop=4
 set mouse=a
 set encoding=utf-8
-set shiftwidth=4
 set foldmethod=indent
 set foldlevel=9999
-set foldminlines=10
+"set foldminlines=10
 set nobackup
-autocmd FileType markdown,tex,plaintex setlocal wrap 
+set tabstop=4
+set shiftwidth=4
+set nowrap
+
+" colorscheme
+colorscheme deus
+let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 
 " NORMAL MODE
 nmap <c-s> xi
 nmap S :w<CR>
 nmap Q :q<CR>
 nmap ; :
+nmap <space> <nop>
 " switch buffer
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-h> <C-w>h
-nnoremap <C-l> <C-w>l
+nnoremap <C-j> <Cmd>wincmd j<CR>
+nnoremap <C-k> <Cmd>wincmd k<CR>
+nnoremap <C-h> <Cmd>wincmd h<CR>
+nnoremap <C-l> <Cmd>wincmd l<CR>
+nnoremap <silent><leader>n :noh<CR>
 " split
 nmap sl :set splitright<CR>:vsplit<CR>
 nmap sh :set nosplitright<CR>:vsplit<CR>
@@ -44,16 +48,10 @@ nmap tu :tabe<CR>
 nmap tl :+tabnext<CR>
 nmap th :-tabnext<CR>
 
+" save and close all
+nmap ZZ :wa<CR>:qa<CR>
+nmap th :-tabnext<CR>
 nmap <tab> gt
-
-if !exists('g:vscode')
-	nmap R :source $MYVIMRC<CR>
-	nmap <A-h> :bp<cr>
-	nmap <A-l> :bn<cr>
-	nmap <A-d> :bd<cr>
-	nnoremap <leader><leader> :tabe<CR>:edit $MYVIMRC<CR>
-else
-endif
 
 " INSERT MODE
 "inoremap <C-h> <Left>
@@ -67,5 +65,13 @@ map <left> :vertical resize -3<CR>
 map <right> :vertical resize +3<CR>
 map J <nop>
 map K <nop>
-map <C-c> <ESC>
+"map <C-c> <ESC>
+
+lua require('user.autocmd')
+
+if !exists('g:vscode')
+	nmap R :source $MYVIMRC<CR>
+	nmap <A-h> :bp<cr>
+	nmap <A-l> :bn<cr>
+endif
 

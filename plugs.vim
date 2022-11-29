@@ -7,10 +7,10 @@ endfunction
 
 call plug#begin()
 if !exists('g:vscode')
-	"Plug 'neoclide/coc.nvim', {'branch': 'release'}
+	Plug 'neoclide/coc.nvim', {'branch': 'release'}
 	Plug 'nvim-lua/plenary.nvim'
 	Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.0' }
-	Plug 'easymotion/vim-easymotion'
+	Plug 'phaazon/hop.nvim'
 	Plug 'nvim-telescope/telescope-file-browser.nvim'
 	Plug 'preservim/tagbar'
 	Plug 'norcalli/nvim-colorizer.lua'
@@ -19,14 +19,20 @@ if !exists('g:vscode')
 	Plug 'akinsho/toggleterm.nvim', {'tag' : '*'}
 	Plug 'tpope/vim-fugitive'
 	"Plug 'lervag/vimtex'
-	Plug 'liuchengxu/vim-clap'
+	"Plug 'liuchengxu/vim-clap'
 	"Plug 'mhinz/vim-startify'
 	Plug 'nvim-tree/nvim-tree.lua'
 	Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 	Plug 'https://github.com/szw/vim-maximizer.git'
 	Plug 'mg979/vim-visual-multi'
 	Plug 'mfussenegger/nvim-dap'
+	Plug 'rcarriga/nvim-dap-ui'
 	Plug 'glepnir/dashboard-nvim'
+	Plug 'nvim-telescope/telescope-file-browser.nvim'
+	Plug 'fhill2/telescope-ultisnips.nvim'
+	"Plug 'xiyaowong/telescope-emoji.nvim'
+	Plug 'nvim-telescope/telescope-dap.nvim'
+	Plug 'akinsho/bufferline.nvim'
 	"Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 endif
 

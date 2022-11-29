@@ -4,14 +4,11 @@ if not status_ok then
 end
 
 local home = os.getenv('HOME')
-  -- linux
- --db.preview_command = 'ueberzug'
-  --
-  --db.preview_file_path = home .. '/.config/nvim/static/neovim.cat'
-  --db.preview_file_height = 11
-  --db.preview_file_width = 70
-db.session_directory = '/user2/liuyuzhen/.cache/nvim/session'
+local empty=[[]]
+db.session_directory = home .. '/.cache/nvim/DSSession'
 db.custom_header = {
+  empty,
+  empty,
   [[        ▄▄▄▄▄███████████████████▄▄▄▄▄     ]],
   [[      ▄██████████▀▀▀▀▀▀▀▀▀▀██████▀████▄   ]],
   [[     █▀████████▄             ▀▀████ ▀██▄  ]],
@@ -23,25 +20,26 @@ db.custom_header = {
   [[              ▀█████▄▄▄▄▄▄▄███▀           ]],
   [[                ▀████▀▀▀████▀             ]],
   [[                  ▀███▄███▀               ]],
-  [[                     ▀█▀                  ]]
+  [[                     ▀█▀                  ]],
+  empty
   }
 db.custom_center = {
-      {icon = '  ',
+	      {icon = '  ',
       desc = 'Recently latest session                 ',
       shortcut = 'SPC g l',
       action ='SessionLoad'},
       {icon = '  ',
       desc = 'Find  File                              ',
-      action = 'Telescope find_files find_command=rg,--hidden,--files',
-      shortcut = 'SPC g f'},
+      action = 'Telescope find_files find_command=find',
+      shortcut = 'SPC f f'},
       {icon = '  ',
       desc ='File Browser                            ',
       action =  'Telescope file_browser',
-      shortcut = 'SPC g b'},
+      shortcut = 'SPC f b'},
       {icon = '  ',
       desc = 'Find  word                              ',
       action = 'Telescope live_grep',
-      shortcut = 'SPC g g'},
+      shortcut = 'SPC f g'},
     }
 
 vim.api.nvim_set_keymap('n', '<leader>gl', ':SessionLoad<CR>', { noremap = true, silent = false })
@@ -53,14 +51,9 @@ pcall(vim.cmd, 'NvimTreeClose')
 end,
 })
 
-vim.cmd([[ 
+vim.cmd([[
 hi link DashboardHeader Label
 hi link DashboardCenter Identifier
 hi link DashboardShortCut String
 hi link DashboardFooter Comment
 ]])
-
---vim.api.nvim_create_autocmd('FileTpye',{pattern='Dashboard',command='hi link DashboardHeader Label'})
---vim.api.nvim_create_autocmd('FileTpye',{pattern='Dashboard',command='hi link DashboardCenter Identifier'})
---vim.api.nvim_create_autocmd('FileTpye',{pattern='Dashboard',command='hi link DashboardShortCut String'})
---vim.api.nvim_create_autocmd('FileTpye',{pattern='Dashboard',command='hi link DashboardFooter Comment'})

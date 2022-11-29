@@ -19,7 +19,7 @@ set nu
 set cursorline
 set relativenumber
 set tabstop=4
-set mouse=r
+set mouse=a
 set encoding=utf-8
 set shiftwidth=4
 set foldmethod=indent
@@ -37,6 +37,7 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-h> <C-w>h
 nnoremap <C-l> <C-w>l
+nnoremap <silent><C-n> :noh<CR>
 " split
 nmap sl :set splitright<CR>:vsplit<CR>
 nmap sh :set nosplitright<CR>:vsplit<CR>
@@ -45,6 +46,9 @@ nmap sj :set splitbelow<CR>:split<CR>
 nmap tu :tabe<CR>
 nmap tl :+tabnext<CR>
 nmap th :-tabnext<CR>
+nmap H ^
+nmap L $
+nnoremap ZZ :wa<CR>:qa<CR>
 
 nmap <tab> gt
 

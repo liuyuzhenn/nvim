@@ -3,6 +3,7 @@ source ~/.config/nvim/general.vim
 source ~/.config/nvim/plugs.vim
 source ~/.config/nvim/plug-config.vim
 
+
 if exists('g:vscode')
 	source ~/.config/nvim/vscode.vim
 else

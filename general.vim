@@ -18,26 +18,30 @@ set background=dark
 set nu
 set cursorline
 set relativenumber
-set tabstop=4
 set mouse=a
 set encoding=utf-8
-set shiftwidth=4
 set foldmethod=indent
 set foldlevel=9999
-set foldminlines=10
+set foldminlines=5
 set nobackup
+set signcolumn=yes
+nmap <A-d> <Cmd>Bdelete<CR>
 
 " NORMAL MODE
 nmap <c-s> xi
 nmap S :w<CR>
 nmap Q :q<CR>
 nmap ; :
-" switch buffer
+" switch window
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-h> <C-w>h
 nnoremap <C-l> <C-w>l
 nnoremap <silent><C-n> :noh<CR>
+nnoremap R <Cmd>source $MYVIMRC<CR>
+
+nnoremap <A-h> <Cmd>bN<CR>
+nnoremap <A-l> <Cmd>bn<CR>
 " split
 nmap sl :set splitright<CR>:vsplit<CR>
 nmap sh :set nosplitright<CR>:vsplit<CR>
@@ -46,19 +50,13 @@ nmap sj :set splitbelow<CR>:split<CR>
 nmap tu :tabe<CR>
 nmap tl :+tabnext<CR>
 nmap th :-tabnext<CR>
-nmap H ^
-nmap L $
+map H ^
+map L $
 nnoremap ZZ :wa<CR>:qa<CR>
 
-nmap <tab> gt
+nmap <silent><leader>n <Cmd>noh<CR>
 
-if !exists('g:vscode')
-	nmap R :source $MYVIMRC<CR>
-	nmap <A-h> :bp<cr>
-	nmap <A-l> :bn<cr>
-	nmap <A-d> :bd<cr>
-	nnoremap <leader><leader> :tabe<CR>:edit $MYVIMRC<CR>
-endif
+nmap <tab> gt
 
 " INSERT MODE
 inoremap <C-h> <Left>
@@ -71,6 +69,5 @@ map <down> :res -3<CR>
 map <left> :vertical resize -3<CR>
 map <right> :vertical resize +3<CR>
 map J <nop>
-map K <nop>
 map <C-c> <ESC>
 

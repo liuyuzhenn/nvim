@@ -7,7 +7,7 @@ endfunction
 
 call plug#begin()
 if !exists('g:vscode')
-	Plug 'neoclide/coc.nvim', {'branch': 'release'}
+	"Plug 'neoclide/coc.nvim', {'branch': 'release'}
 	Plug 'nvim-lua/plenary.nvim'
 	Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.0' }
 	Plug 'phaazon/hop.nvim'
@@ -18,6 +18,7 @@ if !exists('g:vscode')
 	Plug 'nvim-lualine/lualine.nvim'
 	Plug 'akinsho/toggleterm.nvim', {'tag' : '*'}
 	Plug 'tpope/vim-fugitive'
+	Plug 'windwp/nvim-autopairs'
 	"Plug 'lervag/vimtex'
 	"Plug 'liuchengxu/vim-clap'
 	"Plug 'mhinz/vim-startify'
@@ -34,6 +35,26 @@ if !exists('g:vscode')
 	Plug 'nvim-telescope/telescope-dap.nvim'
 	Plug 'akinsho/bufferline.nvim'
 	"Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
+	Plug 'moll/vim-bbye'
+	"
+	" completion
+	Plug 'hrsh7th/cmp-nvim-lsp'
+	Plug 'hrsh7th/cmp-buffer'
+	Plug 'hrsh7th/cmp-path'
+	Plug 'hrsh7th/cmp-cmdline'
+	Plug 'hrsh7th/nvim-cmp'
+	Plug 'quangnguyen30192/cmp-nvim-ultisnips'
+	Plug 'onsails/lspkind.nvim'  " vscode pictograms
+
+	" lsp 
+	Plug 'williamboman/mason.nvim'
+	Plug 'neovim/nvim-lspconfig'
+	Plug 'glepnir/lspsaga.nvim', { 'branch': 'main' }
+
+	" colorscheme
+	Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
+	Plug 'EdenEast/nightfox.nvim'  
+	Plug 'ellisonleao/gruvbox.nvim'
 endif
 
 Plug 'asvetliakov/vim-easymotion', Cond(exists('g:vscode'), { 'as': 'vsc-easymotion' })

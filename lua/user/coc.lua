@@ -66,12 +66,14 @@ if vim.g.vscode ~= nil then
 	return
 end
 
+
 --hi CocMenuSel guibg=#13354A guifg=#EFE0CA
-vim.api.nvim_command([[
-	hi CocHintFloat guibg=#AFD787 guifg=#1F7AA3
-	hi CocSearch ctermfg=12 guifg=#18A3FF
-  hi CocMenuSel guibg=#494F58
-]])
+--vim.api.nvim_command([[
+	--hi CocHintFloat guibg=#AFD787 guifg=#1F7AA3
+	--hi CocSearch ctermfg=12 guifg=#18A3FF
+  --hi CocMenuSel guibg=#494F58
+--]])
+
 
 -- Some servers have issues with backup files, see #649.
 vim.opt.backup = false
@@ -212,5 +214,5 @@ keyset("n", "<space>j", ":<C-u>CocNext<cr>", opts)
 -- Do default action for previous item.
 keyset("n", "<space>k", ":<C-u>CocPrev<cr>", opts)
 -- Resume latest coc list.
-keyset("n", "<space>p", ":<C-u>CocListResume<cr>", opts)
-
+--keyset("n", "<space>p", ":<C-u>CocListResume<cr>", opts)
+-- conflict with markdown preview command

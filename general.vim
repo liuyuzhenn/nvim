@@ -12,22 +12,22 @@ set background=dark
 set nu
 set cursorline
 set relativenumber
+set signcolumn=yes
 set mouse=a
 set encoding=utf-8
 set foldmethod=indent
-set foldlevel=9999
-"set foldminlines=10
+set foldlevel=40
 set nobackup
-set tabstop=4
-set shiftwidth=4
-set nowrap
 
 " colorscheme
-colorscheme deus
+colorscheme monokai_pro
 let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
 let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+nmap <silent><leader>m <Cmd>MaximizerToggle<CR>
 
 " NORMAL MODE
+map H ^
+map L $
 nmap <c-s> xi
 nmap S :w<CR>
 nmap Q :q<CR>
@@ -51,13 +51,7 @@ nmap th :-tabnext<CR>
 " save and close all
 nmap ZZ :wa<CR>:qa<CR>
 nmap th :-tabnext<CR>
-nmap <tab> gt
-
-" INSERT MODE
-"inoremap <C-h> <Left>
-"inoremap <C-j> <Down>
-"inoremap <C-k> <Up>
-"inoremap <C-l> <Right>
+"nmap <tab> gt
 
 map <up> :res +3<CR>
 map <down> :res -3<CR>
@@ -73,5 +67,7 @@ if !exists('g:vscode')
 	nmap R :source $MYVIMRC<CR>
 	nmap <A-h> :bp<cr>
 	nmap <A-l> :bn<cr>
+	nmap <S-tab> :bp<cr>
+	nmap <tab> :bn<cr>
 endif
 

@@ -13,7 +13,10 @@ bf.setup({
 		right_mouse_command = "Bdelete! %d", -- can be a string | function, see "Mouse actions"
 		left_mouse_command = "buffer %d", -- can be a string | function, see "Mouse actions"
 		middle_mouse_command = nil, -- can be a string | function, see "Mouse actions"
-		--indicator = { icon = "▎" },
+		indicator = {
+			--icon = "▎"
+			--style = "underline",
+		},
 		buffer_close_icon = "",
 		modified_icon = "●",
 		close_icon = "",
@@ -27,32 +30,12 @@ bf.setup({
 		end,
 		max_name_length = 18,
 		max_prefix_length = 15, -- prefix used when a buffer is de-duplicated
-		tab_size = 18,
+		tab_size = 4,
 		diagnostics = false, --| "nvim_lsp" | "coc",
 		diagnostics_update_in_insert = false,
 		diagnostics_indicator = function(count, level, diagnostics_dict, context)
 			return "(" .. count .. ")"
 		end,
-		-- NO TE: this will be called a lot so don't do any heavy processing here
-		--custom_filter = function(buf_number, buf_numbers)
-			---- filter out filetypes you don't want to see
-			--if vim.bo[buf_number].filetype ~= "<i-dont-want-to-see-this>" then
-				--return true
-			--end
-			---- filter out by buffer name
-			--if vim.fn.bufname(buf_number) ~= "<buffer-name-I-dont-want>" then
-				--return true
-			--end
-			---- filter out based on arbitrary rules
-			---- e.g. filter out vim wiki buffer from tabline in your work repo
-			--if vim.fn.getcwd() == "<work-repo>" and vim.bo[buf_number].filetype ~= "wiki" then
-				--return true
-			--end
-			---- filter out by it's index number in list (don't show first buffer)
-			--if buf_numbers[1] ~= buf_number then
-				--return true
-			--end
-		--end,
 		offsets = { { filetype = "NvimTree", text = "File Explorer", text_align = "center" } }, -- | function , text_align = "left" | "center" | "right"}},
 		show_buffer_icons = true, --| false, -- disable filetype icons for buffers
 		show_buffer_close_icons = false, --| false,
@@ -62,6 +45,7 @@ bf.setup({
 		-- can also be a table containing 2 custom separators
 		-- [focused and unfocused]. eg: { '|', '|' }
 		separator_style = "slant", --| "slant" | "thick" | "thin" | { 'any', 'any' },
+		--separator_style = { '', '' },
 		enforce_regular_tabs = false, --| true,
 		always_show_bufferline = false, -- | false,
 		sort_by = "id", -- ,'id' | 'extension' | 'relative_directory' | 'directory' | 'tabs' | function(buffer_a, buffer_b)
@@ -71,18 +55,39 @@ bf.setup({
 	},
 	highlights = {
 		separator_selected = {
-			bg = "#43505B",
+			--bg = "#565049",
 		},
-		buffer_selected = {
-			fg = '#fdf6e3',
-			bg = "#43505B",
-			undercurl = false,
+		--duplicate_selected = { bg = "#565049" },
+
+		indicator_selected = {
+			--bg = "#565049"
+			underline = false,
+			underdoule = false,
 			bold = true,
-			italic = false
 		},
-		separator = {
+		--tab_selected = { bg = "#565049" },
+		--pick_selected = { bg = "#565049" },
+		--modified_selected = {
+		----bg = "#43505B",
+		--bg = "#565049",
+		--},
+		buffer_selected = {
+			fg = "#fd971f", -- for deus
+			--underline = true,
+			bold = true,
+			italic = false,
 		},
-		fill = {
-		}
-	}
+		separator = {},
+		fill = {},
+	},
 })
+
+vim.keymap.set({ "n", "i" }, "<A-1>", "<Cmd>BufferLineGoToBuffer 1<CR>", { silent = true })
+vim.keymap.set({ "n", "i" }, "<A-2>", "<Cmd>BufferLineGoToBuffer 2<CR>", { silent = true })
+vim.keymap.set({ "n", "i" }, "<A-3>", "<Cmd>BufferLineGoToBuffer 3<CR>", { silent = true })
+vim.keymap.set({ "n", "i" }, "<A-4>", "<Cmd>BufferLineGoToBuffer 4<CR>", { silent = true })
+vim.keymap.set({ "n", "i" }, "<A-5>", "<Cmd>BufferLineGoToBuffer 5<CR>", { silent = true })
+vim.keymap.set({ "n", "i" }, "<A-6>", "<Cmd>BufferLineGoToBuffer 6<CR>", { silent = true })
+vim.keymap.set({ "n", "i" }, "<A-7>", "<Cmd>BufferLineGoToBuffer 7<CR>", { silent = true })
+vim.keymap.set({ "n", "i" }, "<A-8>", "<Cmd>BufferLineGoToBuffer 8<CR>", { silent = true })
+vim.keymap.set({ "n", "i" }, "<A-9>", "<Cmd>BufferLineGoToBuffer 9<CR>", { silent = true })

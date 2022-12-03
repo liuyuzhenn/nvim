@@ -7,7 +7,8 @@ endfunction
 
 call plug#begin('$VIM/plugs')
 if !exists('g:vscode')
-	Plug 'neoclide/coc.nvim', {'branch': 'release'}
+	"Plug 'neoclide/coc.nvim', {'branch': 'release'}
+	Plug 'lervag/vimtex'
 	Plug 'nvim-lua/plenary.nvim'
 	Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 	"Plug 'easymotion/vim-easymotion'
@@ -25,20 +26,45 @@ if !exists('g:vscode')
 	Plug 'akinsho/bufferline.nvim'
 	Plug 'akinsho/toggleterm.nvim', {'tag' : '*'}
 	Plug 'tpope/vim-fugitive'
-	Plug 'lervag/vimtex'
 	"Plug 'liuchengxu/vim-clap'
 	Plug 'nvim-tree/nvim-tree.lua'
 	Plug 'glepnir/dashboard-nvim'
-	"Plug 'https://github.com/szw/vim-maximizer.git'
+	Plug 'https://github.com/szw/vim-maximizer.git'
+	"Plug 'declancm/windex.nvim'
+	"Plug 'declancm/maximize.nvim'
 	Plug 'mg979/vim-visual-multi'
-	Plug 'mfussenegger/nvim-dap'
-	Plug 'mfussenegger/nvim-dap-python'
 	Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
-	Plug 'rcarriga/nvim-dap-ui'
 	Plug 'mhartington/formatter.nvim'
 	Plug 'windwp/nvim-autopairs'
 	Plug 'famiu/bufdelete.nvim'
 	Plug 'folke/todo-comments.nvim'
+	
+	Plug 'mfussenegger/nvim-dap'
+	Plug 'mfussenegger/nvim-dap-python'
+	Plug 'rcarriga/nvim-dap-ui'
+	Plug 'rmagatti/auto-session'
+	Plug 'rmagatti/session-lens'
+
+	" completion
+	Plug 'hrsh7th/cmp-nvim-lsp'
+	Plug 'hrsh7th/cmp-buffer'
+	Plug 'hrsh7th/cmp-path'
+	Plug 'hrsh7th/cmp-cmdline'
+	Plug 'hrsh7th/nvim-cmp'
+	Plug 'quangnguyen30192/cmp-nvim-ultisnips'
+	Plug 'onsails/lspkind.nvim'  " vscode pictograms
+
+	" lsp 
+	Plug 'williamboman/mason.nvim'
+	Plug 'neovim/nvim-lspconfig'
+	Plug 'glepnir/lspsaga.nvim', { 'branch': 'main' }
+
+	" colorscheme
+	Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
+	Plug 'EdenEast/nightfox.nvim'  
+	Plug 'ellisonleao/gruvbox.nvim' 
+	"Plug 'NTBBloodbath/doom-one.nvim'
+	Plug 'tanvirtin/monokai.nvim'
 endif
 
 "Plug 'asvetliakov/vim-easymotion', Cond(exists('g:vscode'), { 'as': 'vsc-easymotion' })

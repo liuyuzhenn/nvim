@@ -8,7 +8,7 @@ if not ok then
 	return
 end
 
-local fb_actions = require 'telescope'.extensions.file_browser.actions
+local fb_actions = require("telescope").extensions.file_browser.actions
 
 telescope.setup({
 	defaults = {
@@ -43,7 +43,7 @@ telescope.setup({
 			"--glob=!.git/",
 		},
 		file_ignore_patterns = {},
-		path_display = { "smart" },
+		path_display = { truncate = 5 },
 		winblend = 0,
 		border = {},
 		borderchars = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
@@ -98,13 +98,22 @@ telescope.setup({
 		},
 		file_browser = {
 			theme = "dropdown",
-			hijach_netw = true,
+			--path = "%:p:h",
+			previewer = false,
+			hidden = false,
+			hide_parent_dir = false,
+			collapse_dirs = true,
+			initial_mode = "insert",
+			hijach_netw = false,
+			--layerout_config = { height = 40 },
 			mappings = {
-				i = {};
+				i = {
+					["<C-u>"] = fb_actions.goto_parent_dir,
+				},
 				n = {
-					['a'] = fb_actions.create,
-					['u'] = fb_actions.goto_parent_dir,
-				}
+					--["a"] = fb_actions.create,
+					["u"] = fb_actions.goto_parent_dir,
+				},
 			},
 		},
 		emoji = {
@@ -130,11 +139,13 @@ vim.keymap.set("n", "<leader>ft", builtin.treesitter, {})
 vim.keymap.set("n", "<leader>fc", builtin.grep_string, {})
 vim.keymap.set("n", "<leader>fb", extensions.file_browser.file_browser, {})
 vim.keymap.set("n", "<leader>fm", extensions.bookmarks.bookmarks, {})
+vim.keymap.set("n", "<leader>fs", "<Cmd>SearchSession<CR>", {})
 
 -- To get telescope-file-browser loaded and woforirking with telescope,
 -- you need to call load_extension, somewhere after setup function:
 telescope.load_extension("file_browser")
 telescope.load_extension("ultisnips")
---require("telescope").load_extension "emoji"
+telescope.load_extension("emoji")
 telescope.load_extension("bookmarks")
 telescope.load_extension("dap")
+telescope.load_extension("session-lens")

@@ -60,11 +60,11 @@ nvim_tree.setup({
 		"alpha",
 	},
 	diagnostics = {
-		enable = false,
+		enable = true,
 		icons = {
 			hint = "",
 			info = "",
-			warning = "",
+			warning = "",
 			error = "",
 		},
 	},
@@ -76,7 +76,7 @@ nvim_tree.setup({
 	sort_by = "case_sensitive",
 	view = {
 		width = 25,
-		adaptive_size = true,
+		adaptive_size = false,
 		hide_root_folder = false,
 		mappings = {
 			list = {
@@ -161,6 +161,5 @@ nvim_tree.setup({
 	},
 })
 
-local map = vim.api.nvim_set_keymap
 local opt = { noremap = true, silent = true }
-map("n", "<A-e>", ":NvimTreeToggle<CR>", opt)
+vim.keymap.set({ "n", "i" }, "<A-e>", "<Cmd>NvimTreeToggle<CR>", opt)

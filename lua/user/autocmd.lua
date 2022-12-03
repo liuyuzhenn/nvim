@@ -1,9 +1,10 @@
-vim.cmd[[
+vim.cmd [[
 augroup _general
 	autocmd!
-	autocmd FileType markdown,tex,plaintex setlocal wrap
-	autocmd BufWritePre *.lua,*.json,*.vim setlocal tabstop=2 shiftwidth=2
-	autocmd BufEnter *.lua,*.json,*.vim setlocal tabstop=2 shiftwidth=2
+	autocmd FileType * setlocal nowrap
+	autocmd FileType markdown,tex,txt,plaintex setlocal wrap
+	autocmd FileType  * setlocal tabstop=4 shiftwidth=4
+	autocmd FileType json,lua,vim setlocal tabstop=2 shiftwidth=2
 augroup end
 
 augroup _fold_bug_solution
@@ -12,4 +13,3 @@ augroup _fold_bug_solution
 augroup end
 
 ]]
-

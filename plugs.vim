@@ -30,12 +30,15 @@ if !exists('g:vscode')
 	Plug 'rcarriga/nvim-dap-ui'
 	Plug 'glepnir/dashboard-nvim'
 	Plug 'nvim-telescope/telescope-file-browser.nvim'
+	Plug 'nvim-telescope/telescope-media-files.nvim'
 	Plug 'fhill2/telescope-ultisnips.nvim'
 	"Plug 'xiyaowong/telescope-emoji.nvim'
 	Plug 'nvim-telescope/telescope-dap.nvim'
 	Plug 'akinsho/bufferline.nvim'
 	"Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 	Plug 'moll/vim-bbye'
+	Plug 'rmagatti/auto-session'
+	Plug 'rmagatti/session-lens'
 	"
 	" completion
 	Plug 'hrsh7th/cmp-nvim-lsp'
@@ -55,6 +58,7 @@ if !exists('g:vscode')
 	Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
 	Plug 'EdenEast/nightfox.nvim'  
 	Plug 'ellisonleao/gruvbox.nvim'
+	Plug 'tanvirtin/monokai.nvim'
 endif
 
 Plug 'asvetliakov/vim-easymotion', Cond(exists('g:vscode'), { 'as': 'vsc-easymotion' })

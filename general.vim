@@ -9,7 +9,7 @@ let mapleader = "\<space>"
 set nowrap
 set nocompatible              " be iMproved, required
 set backspace=indent,eol,start
-colorscheme deus
+colorscheme monokai_pro
 let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
 let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 set showcmd
@@ -40,8 +40,6 @@ nnoremap <C-l> <C-w>l
 nnoremap <silent><C-n> :noh<CR>
 nnoremap R <Cmd>source $MYVIMRC<CR>
 
-nnoremap <A-h> <Cmd>bN<CR>
-nnoremap <A-l> <Cmd>bn<CR>
 " split
 nmap sl :set splitright<CR>:vsplit<CR>
 nmap sh :set nosplitright<CR>:vsplit<CR>
@@ -50,13 +48,15 @@ nmap sj :set splitbelow<CR>:split<CR>
 nmap tu :tabe<CR>
 nmap tl :+tabnext<CR>
 nmap th :-tabnext<CR>
+nnoremap <A-h> <Cmd>bN<CR>
+nnoremap <A-l> <Cmd>bn<CR>
+nnoremap <S-tab> <Cmd>bN<CR>
+nnoremap <tab> <Cmd>bn<CR>
 map H ^
 map L $
 nnoremap ZZ :wa<CR>:qa<CR>
 
 nmap <silent><leader>n <Cmd>noh<CR>
-
-nmap <tab> gt
 
 " INSERT MODE
 inoremap <C-h> <Left>

@@ -43,7 +43,7 @@ telescope.setup {
 			"--glob=!.git/",
 		},
 		file_ignore_patterns = {},
-		path_display = { "smart" },
+		path_display = { truncate = 5 },
 		winblend = 0,
 		border = {},
 		borderchars = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
@@ -69,14 +69,18 @@ telescope.setup {
 		},
 	},
 	extensions = {
+		media_files = {
+			filetypes = { "png", "jpg", "jpeg" },
+			find_cmd = { "/user2/liuyuzhen/software/ripgrep/rg" },
+		},
 		file_browser = {
 			theme = "dropdown",
-			path = "%:p:h",
+			--path = "%:p:h",
 			previewer = false,
-			hidden = true,
+			hidden = false,
 			initial_mode = "insert",
-			hijach_netw = true,
-			layerout_config = { height = 40 },
+			hijach_netw = false,
+			--layerout_config = { height = 40 },
 			mappings = {
 				i = {},
 				n = {
@@ -95,7 +99,7 @@ telescope.setup {
 				-- insert emoji when picked
 				vim.api.nvim_put({ emoji.value }, 'c', false, true)
 			end,
-		}
+		},
 	},
 }
 
@@ -107,9 +111,13 @@ vim.keymap.set('n', '<leader>fh', builtin.commands, {})
 vim.keymap.set('n', '<leader>ft', builtin.treesitter, {})
 vim.keymap.set('n', '<leader>fc', builtin.grep_string, {})
 vim.keymap.set("n", "<leader>fb", extensions.file_browser.file_browser, {})
+vim.keymap.set("n", "<leader>fs", "<Cmd>SearchSession<CR>", {})
 
 -- To get telescope-file-browser loaded and woforirking with telescope,
 -- you need to call load_extension, somewhere after setup function:
 telescope.load_extension("file_browser")
---require("telescope").load_extension "emoji"
+--telescope.load_extension("media_files")
+--telescope.load_extension "emoji"
 telescope.load_extension("dap")
+telescope.load_extension("session-lens")
+telescope.load_extension("ultisnips")

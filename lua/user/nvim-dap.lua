@@ -33,11 +33,12 @@ dap.configurations.python = {
 
 
 vim.cmd([[
+    nnoremap <silent> <F1> <Cmd>lua require'dap'.step_into()<CR>
+    nnoremap <silent> <F2> <Cmd>lua require'dap'.step_over()<CR>
+    nnoremap <silent> <F3> <Cmd>lua require'dap'.stop_out()<CR>
+    nnoremap <silent> <F4> <Cmd>lua require'dap'.run_to_cursor()<CR>
     nnoremap <silent> <F5> <Cmd>lua require'dap'.continue()<CR>
-    nnoremap <silent> <F4> <Cmd>lua require'dap'.terminate()<CR>
-    nnoremap <silent> <A-1> <Cmd>lua require'dap'.step_into()<CR>
-    nnoremap <silent> <A-2> <Cmd>lua require'dap'.step_over()<CR>
-    nnoremap <silent> <A-3> <Cmd>lua require'dap'.run_to_cursor()<CR>
+    nnoremap <silent> <F6> <Cmd>lua require'dap'.terminate()<CR>
     nnoremap <silent> <leader>dd <Cmd>lua require'dap'.toggle_breakpoint()<CR>
     nnoremap <silent> <leader>dr <Cmd>lua require'dap'.repl.toggle({},'vsplit')<CR>
 ]])

@@ -22,6 +22,7 @@ formatter.setup({
 		-- and will be executed in order
 		lua = { require("formatter.filetypes.lua").stylua },
 		python = { require("formatter.filetypes.python").autopep8 },
+		cpp = { require("formatter.filetypes.cpp").clangformat },
 		-- Use the special "*" filetype for defining formatter configurations on any filetype
 		["*"] = {
 			require("formatter.filetypes.any").remove_trailing_whitespace,

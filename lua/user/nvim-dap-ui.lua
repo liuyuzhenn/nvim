@@ -61,8 +61,8 @@ dapui.setup({
 		},
 		{
 			elements = {
-				--{ id = "repl", size = 0.1 },
-				{ id = "console", size = 1 },
+				{ id = "repl", size = 0.35 },
+				{ id = "console", size = 0.65 },
 			},
 			size = 0.22, -- 25% of total lines
 			position = "right",
@@ -100,7 +100,7 @@ dapui.setup({
 })
 
 vim.cmd([[
-	vnoremap <F3> <Cmd>lua require("dapui").eval()<CR>
-	nnoremap <F3> <Cmd>lua require("dapui").eval()<CR>
+	vnoremap <A-k> <Cmd>lua require("dapui").eval()<CR>
+	nnoremap <A-k> <Cmd>lua require("dapui").eval()<CR>
 	nnoremap <leader>dp <Cmd>lua require("dapui").toggle()<CR>
 ]])

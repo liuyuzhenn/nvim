@@ -97,6 +97,34 @@ lspconfig.clangd.setup({
 	cmd = { "clangd.cmd" },
 })
 
+lspconfig.cmake.setup({
+	on_attach = on_attach,
+	flags = lsp_flags,
+	cmd = { "cmake-language-server.cmd" },
+})
+
+lspconfig.vimls.setup({
+	on_attach = on_attach,
+	cmd = { "vim-language-server.cmd", "--stdio" },
+	diagnostic = {
+		enable = true
+	},
+	indexes = {
+		count = 3,
+		gap = 100,
+		projectRootPatterns = { "runtime", "nvim", ".git", "autoload", "plugin" },
+		runtimepath = true
+	},
+	isNeovim = true,
+	iskeyword = "@,48-57,_,192-255,-#",
+	runtimepath = "",
+	suggest = {
+		fromRuntimepath = true,
+		fromVimruntime = true
+	},
+	vimruntime = ""
+})
+
 local signs = { Error = "", Warn = "", Hint = "", Info = "" }
 for type, icon in pairs(signs) do
 	local hl = "DiagnosticSign" .. type

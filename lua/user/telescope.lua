@@ -101,7 +101,7 @@ telescope.setup({
 			--path = "%:p:h",
 			previewer = false,
 			hidden = false,
-			hide_parent_dir = false,
+			hide_parent_dir = true,
 			collapse_dirs = true,
 			initial_mode = "insert",
 			hijach_netw = false,

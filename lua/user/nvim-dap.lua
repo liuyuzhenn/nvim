@@ -27,6 +27,31 @@ dap.configurations.python = {
 	},
 }
 
+local base_dir = 'C:/Users/23792/.vscode/extensions/ms-vscode.cpptools-1.13.4-win32-x64/debugAdapters/'
+
+dap.adapters.cppdbg = {
+	id = 'cppdbg',
+	type = 'executable',
+	command = base_dir .. 'bin/OpenDebugAD7.exe',
+	options = {
+		detached = false
+	}
+}
+
+dap.configurations.cpp = {
+	{
+		name = "Launch file",
+		type = "cppdbg",
+		request = "launch",
+		program = function()
+			local p = vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '\\build\\debug\\main.exe', 'file')
+			return p
+		end,
+		cwd = '${workspaceFolder}',
+		miDebuggerPath = base_dir .. 'vsdbg/bin/vsdbg.exe',
+		stopAtEntry = true,
+	}
+}
 
 dap.adapters.lua = function(callback, config)
 	callback({
@@ -64,17 +89,19 @@ dap.configurations.lua = {
 vim.cmd([[
     nnoremap <silent> <F1> <Cmd>lua require'dap'.step_into()<CR>
     nnoremap <silent> <F2> <Cmd>lua require'dap'.step_over()<CR>
-    nnoremap <silent> <F3> <Cmd>lua require'dap'.stop_out()<CR>
+    nnoremap <silent> <F3> <Cmd>lua require'dap'.step_out()<CR>
     nnoremap <silent> <F4> <Cmd>lua require'dap'.run_to_cursor()<CR>
     nnoremap <silent> <F5> <Cmd>lua require'dap'.continue()<CR>
     nnoremap <silent> <F6> <Cmd>lua require'dap'.terminate()<CR>
     nnoremap <silent> <leader>dd <Cmd>lua require'dap'.toggle_breakpoint()<CR>
+    nnoremap <silent> <leader>dc <Cmd>lua require'dap'.set_breakpoint(vim.fn.input '[Condition] > ')<CR>
     nnoremap <silent> <leader>dr <Cmd>lua require'dap'.repl.toggle({},'vsplit')<CR>
 ]])
 
 --nnoremap <silent> <leader>di <Cmd>lua require'dap.ui.widgets'.hover()<CR>
 --nnoremap <silent> <leader>dp <Cmd>lua require'dap.ui.widgets'.preview()<CR>
 
-vim.fn.sign_define("DapBreakpoint", { text = "🚨", texthl = "", linehl = "", numhl = "" })
+vim.fn.sign_define("DapBreakpoint", { text = "🔴", texthl = "", linehl = "", numhl = "" })
+vim.fn.sign_define("DapBreakpointCondition", { text = "🟡", texthl = "", linehl = "", numhl = "" })
 vim.fn.sign_define("DapStopped", { text = "⭐️", texthl = "", linehl = "", numhl = "" })
 vim.fn.sign_define("DapBreakpointRejected", { text = "", texthl = "", linehl = "", numhl = "" })

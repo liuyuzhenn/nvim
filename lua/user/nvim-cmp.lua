@@ -5,6 +5,10 @@ end
 local lspkind = require("lspkind")
 
 cmp.setup({
+	preselect = cmp.PreselectMode.None,
+	enabled = function()
+		return vim.api.nvim_buf_get_option(0, "buftype") ~= "prompt" or require("cmp_dap").is_dap_buffer()
+	end,
 	snippet = {
 		-- REQUIRED - you must specify a snippet engine
 		expand = function(args)
@@ -14,31 +18,26 @@ cmp.setup({
 			vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
 		end,
 	},
-	window = {
-		-- completion = cmp.config.window.bordered(),
-		-- documentation = cmp.config.window.bordered(),
-	},
+	window = {},
 	formatting = {
-		format = lspkind.cmp_format({ wirth_text = false, maxwidth = 50 })
+		format = lspkind.cmp_format({ wirth_text = false, maxwidth = 50 }),
 	},
-	mapping = cmp.mapping.preset.insert({
-		["<C-k>"] = cmp.mapping.select_prev_item(),
-		["<C-j>"] = cmp.mapping.select_next_item(),
-		["<C-u>"] = cmp.mapping.scroll_docs(-8),
-		["<C-d>"] = cmp.mapping.scroll_docs(8),
-		["<C-Space>"] = cmp.mapping.complete(),
-		["<C-e>"] = cmp.mapping.abort(),
-		["<Tab>"] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
-	}),
+	mapping = {
+		["<C-k>"] = cmp.mapping(cmp.mapping.select_prev_item(), { "i", "c" }),
+		["<C-j>"] = cmp.mapping(cmp.mapping.select_next_item(), { "i", "c" }),
+		["<C-u>"] = cmp.mapping(cmp.mapping.scroll_docs(-6), { "i", "c" }),
+		["<C-d>"] = cmp.mapping(cmp.mapping.scroll_docs(6), { "i", "c" }),
+		["<C-e>"] = cmp.mapping(cmp.mapping.abort(), { "i", "c" }),
+		["<Tab>"] = cmp.mapping(cmp.mapping.confirm({ select = true }), { "i", "c" }),
+		["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
+	},
 	sources = cmp.config.sources({
-		{ name = "omni" },
 		{ name = "nvim_lsp" },
 		{ name = "ultisnips" }, -- For ultisnips users.
-		--{ name = "vsnip" }, -- For vsnip users.
-		-- { name = 'luasnip' }, -- For luasnip users.
-		-- { name = 'snippy' }, -- For snippy users.
 		{ name = "buffer" },
 		{ name = "path" },
+		--{ name = "nvim_lsp_signature_help" },
+		--{ name = "latex_symbols" },
 		--{ name = "cmdline" },
 	}),
 })
@@ -50,6 +49,12 @@ cmp.setup.filetype("gitcommit", {
 	}, {
 		{ name = "buffer" },
 	}),
+})
+
+cmp.setup.filetype({ "dap-repl", "dapui_watches", "dapui_hover" }, {
+	sources = {
+		{ name = "dap" },
+	},
 })
 
 -- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).

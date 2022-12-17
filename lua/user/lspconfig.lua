@@ -57,6 +57,7 @@ lspconfig.pyright.setup({
 		include = { "${workspaceFolder}" },
 		python = {
 			analysis = {
+				autoImportCompletions = false,
 				diagnosticSeverityOverrides = {
 					reportUnboundVariable = "information",
 					reportGeneralTypeIssues = "none",
@@ -97,6 +98,15 @@ lspconfig.clangd.setup({
 	cmd = { "clangd.cmd" },
 })
 
+lspconfig.html.setup({
+	on_attach = on_attach,
+})
+
+lspconfig.cssls.setup({
+	on_attach = on_attach,
+	--cmd = { "vscode-css-language-server.cmd" },
+})
+
 lspconfig.cmake.setup({
 	on_attach = on_attach,
 	flags = lsp_flags,
@@ -125,7 +135,7 @@ lspconfig.vimls.setup({
 	vimruntime = ""
 })
 
-local signs = { Error = "", Warn = "", Hint = "", Info = "" }
+local signs = { Error = "", Warn = "", Hint = "", Info = "" }
 for type, icon in pairs(signs) do
 	local hl = "DiagnosticSign" .. type
 	vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })

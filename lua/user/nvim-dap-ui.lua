@@ -61,8 +61,8 @@ dapui.setup({
 		},
 		{
 			elements = {
-				{ id = "repl", size = 0.35 },
-				{ id = "console", size = 0.65 },
+				{ id = "repl", size = 0.65 },
+				{ id = "console", size = 0.35 },
 			},
 			size = 0.22, -- 25% of total lines
 			position = "right",

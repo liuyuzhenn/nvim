@@ -16,7 +16,7 @@ set signcolumn=yes
 set mouse=a
 set encoding=utf-8
 set foldmethod=indent
-set foldlevel=40
+set foldlevel=999
 set nobackup
 
 " colorscheme
@@ -34,19 +34,19 @@ nmap Q :q<CR>
 nmap ; :
 nmap <space> <nop>
 " switch buffer
-nnoremap <C-j> <Cmd>wincmd j<CR>
-nnoremap <C-k> <Cmd>wincmd k<CR>
-nnoremap <C-h> <Cmd>wincmd h<CR>
-nnoremap <C-l> <Cmd>wincmd l<CR>
+nnoremap <silent><C-j> <Cmd>wincmd j<CR>
+nnoremap <silent><C-k> <Cmd>wincmd k<CR>
+nnoremap <silent><C-h> <Cmd>wincmd h<CR>
+nnoremap <silent><C-l> <Cmd>wincmd l<CR>
 nnoremap <silent><leader>n :noh<CR>
 " split
-nmap sl :set splitright<CR>:vsplit<CR>
-nmap sh :set nosplitright<CR>:vsplit<CR>
-nmap sk :set nosplitbelow<CR>:split<CR>
-nmap sj :set splitbelow<CR>:split<CR>
-nmap tu :tabe<CR>
-nmap tl :+tabnext<CR>
-nmap th :-tabnext<CR>
+nmap <silent>sl :set splitright<CR>:vsplit<CR>
+nmap <silent>sh :set nosplitright<CR>:vsplit<CR>
+nmap <silent>sk :set nosplitbelow<CR>:split<CR>
+nmap <silent>sj :set splitbelow<CR>:split<CR>
+nmap <silent>tu :tabe<CR>
+nmap <silent>tl :+tabnext<CR>
+nmap <silent>th :-tabnext<CR>
 
 " save and close all
 nmap ZZ :wa<CR>:qa<CR>
@@ -59,6 +59,7 @@ map <left> :vertical resize -3<CR>
 map <right> :vertical resize +3<CR>
 map J <nop>
 map K <nop>
+let $TMP="C:/Users/23792/.tmp"
 "map <C-c> <ESC>
 
 lua require('user.autocmd')

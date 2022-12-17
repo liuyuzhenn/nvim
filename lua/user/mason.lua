@@ -39,7 +39,7 @@ mason.setup({
 			-- Keymap to cancel a package installation
 			cancel_installation = "<C-c>",
 			-- Keymap to apply language filter
-			apply_language_filter = "<C-f>",
+			--apply_language_filter = "<Clin-f>",
 		},
 	},
 })

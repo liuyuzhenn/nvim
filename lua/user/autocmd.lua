@@ -13,3 +13,15 @@ augroup _fold_bug_solution
 augroup end
 
 ]]
+
+vim.api.nvim_create_autocmd(
+	'TextYankPost',
+	{
+		callback = function()
+			vim.highlight.on_yank {
+				higroup = 'IncSearch',
+				timeout = 180
+			}
+		end
+	}
+)

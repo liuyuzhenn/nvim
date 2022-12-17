@@ -1,8 +1,8 @@
 if has_key(g:plugs, "ultisnips")
 	let g:UltiSnipsSnippetDirectories=['UltiSnips']
 	let g:UltiSnipsExpandTrigger='<c-w>'
-	let g:UltiSnipsJumpForwardTrigger='<c-j>'
-	let g:UltiSnipsJumpBackwardTrigger='<c-k>'
+	let g:UltiSnipsJumpForwardTrigger='<c-l>'
+	let g:UltiSnipsJumpBackwardTrigger='<c-h>'
 	let g:snips_author='liuyuzhen'
 	let g:snips_email='liuyuzhen22@mails.ucas.ac.cn'
 	let g:snips_github='https://github.com/liuyuzhenn'
@@ -28,10 +28,13 @@ lua require('user.nvim-autopairs')
 lua require('user.bufdelete')
 lua require('user.todo-comments')
 lua require('user.auto-session')
+lua require('user.nvim-notify')
+lua require('user.pretty-fold')
 "lua require('user.maximize')
 "lua require('user.coc')
 lua require('user.vimtex')
 lua require('user.lspconfig')
+lua require('user.lsp-signature')
 lua require('user.nvim-cmp')
 lua require('user.lspkind')
 lua require('user.lspsaga')

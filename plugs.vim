@@ -37,11 +37,17 @@ if !exists('g:vscode')
 	Plug 'famiu/bufdelete.nvim'
 	Plug 'folke/todo-comments.nvim'
 	
+	" notification
+	Plug 'rcarriga/nvim-notify' 
+	
 	Plug 'mfussenegger/nvim-dap'
 	Plug 'mfussenegger/nvim-dap-python'
 	Plug 'rcarriga/nvim-dap-ui'
 	Plug 'rmagatti/auto-session'
 	Plug 'rmagatti/session-lens'
+	
+	" fold
+	Plug 'anuvyklack/pretty-fold.nvim'
 
 	" completion
 	Plug 'hrsh7th/cmp-nvim-lsp'
@@ -49,6 +55,11 @@ if !exists('g:vscode')
 	Plug 'hrsh7th/cmp-path'
 	Plug 'hrsh7th/cmp-cmdline'
 	Plug 'hrsh7th/nvim-cmp'
+	Plug 'rcarriga/cmp-dap'
+	"Plug 'hrsh7th/cmp-omni' " autocompletion bug
+	"Plug 'hrsh7th/cmp-nvim-lsp-signature-help'
+	"Plug 'kdheepak/cmp-latex-symbols'
+	Plug 'ray-x/lsp_signature.nvim'
 	Plug 'quangnguyen30192/cmp-nvim-ultisnips'
 	Plug 'onsails/lspkind.nvim'  " vscode pictograms
 	Plug 'windwp/nvim-autopairs'

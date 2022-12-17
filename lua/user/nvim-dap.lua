@@ -27,10 +27,10 @@ dap.configurations.python = {
 	},
 }
 
-local base_dir = 'C:/Users/23792/.vscode/extensions/ms-vscode.cpptools-1.13.4-win32-x64/debugAdapters/'
+local base_dir = 'C:/Users/23792/.vscode/extensions/ms-vscode.cpptools-1.13.5-win32-x64/debugAdapters/'
 
-dap.adapters.cppdbg = {
-	id = 'cppdbg',
+dap.adapters.cppvsdbg = {
+	id = 'cppvsdbg',
 	type = 'executable',
 	command = base_dir .. 'bin/OpenDebugAD7.exe',
 	options = {
@@ -41,14 +41,14 @@ dap.adapters.cppdbg = {
 dap.configurations.cpp = {
 	{
 		name = "Launch file",
-		type = "cppdbg",
+		type = "cppvsdbg",
 		request = "launch",
 		program = function()
 			local p = vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '\\build\\debug\\main.exe', 'file')
 			return p
 		end,
 		cwd = '${workspaceFolder}',
-		miDebuggerPath = base_dir .. 'vsdbg/bin/vsdbg.exe',
+		--miDebuggerPath = base_dir .. 'vsdbg/bin/vsdbg.exe',
 		stopAtEntry = true,
 	}
 }
@@ -103,5 +103,5 @@ vim.cmd([[
 
 vim.fn.sign_define("DapBreakpoint", { text = "🔴", texthl = "", linehl = "", numhl = "" })
 vim.fn.sign_define("DapBreakpointCondition", { text = "🟡", texthl = "", linehl = "", numhl = "" })
-vim.fn.sign_define("DapStopped", { text = "⭐️", texthl = "", linehl = "", numhl = "" })
+vim.fn.sign_define("DapStopped", { text = "🦄", texthl = "", linehl = "", numhl = "" })
 vim.fn.sign_define("DapBreakpointRejected", { text = "", texthl = "", linehl = "", numhl = "" })

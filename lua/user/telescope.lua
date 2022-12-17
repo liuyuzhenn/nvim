@@ -103,6 +103,7 @@ telescope.setup({
 			hidden = false,
 			hide_parent_dir = true,
 			collapse_dirs = true,
+			respect_gitignore = true,
 			initial_mode = "insert",
 			hijach_netw = false,
 			--layerout_config = { height = 40 },

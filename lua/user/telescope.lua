@@ -32,7 +32,7 @@ telescope.setup {
 			vertical = { mirror = false },
 		},
 		vimgrep_arguments = {
-			"/user2/liuyuzhen/software/ripgrep/rg",
+			"/usr/bin/rg",
 			"--color=never",
 			"--no-heading",
 			"--with-filename",
@@ -69,10 +69,6 @@ telescope.setup {
 		},
 	},
 	extensions = {
-		media_files = {
-			filetypes = { "png", "jpg", "jpeg" },
-			find_cmd = { "/user2/liuyuzhen/software/ripgrep/rg" },
-		},
 		file_browser = {
 			theme = "dropdown",
 			--path = "%:p:h",
@@ -116,8 +112,7 @@ vim.keymap.set("n", "<leader>fs", "<Cmd>SearchSession<CR>", {})
 -- To get telescope-file-browser loaded and woforirking with telescope,
 -- you need to call load_extension, somewhere after setup function:
 telescope.load_extension("file_browser")
---telescope.load_extension("media_files")
---telescope.load_extension "emoji"
+telescope.load_extension("emoji")
 telescope.load_extension("dap")
 telescope.load_extension("session-lens")
 telescope.load_extension("ultisnips")

@@ -49,7 +49,7 @@ dapui.setup({
 	-- Layouts are opened in order so that earlier layouts take priority in window sizing.
 	layouts = {
 		{
-		elements = {
+			elements = {
 				-- Elements can be strings or table with id and size keys.
 				--{ id = "breakpoints", size = 0 },
 				{ id = "stacks", size = 0.15 },
@@ -61,8 +61,8 @@ dapui.setup({
 		},
 		{
 			elements = {
-				--{ id = "repl", size = 0.4 },
-				{ id = "console", size = 1 },
+				{ id = "repl", size = 0.7 },
+				{ id = "console", size = 0.3 },
 			},
 			size = 0.22, -- 25% of total lines
 			position = "right",

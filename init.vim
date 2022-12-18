@@ -1,4 +1,4 @@
-let g:python3_host_prog = '/user2/liuyuzhen/anaconda3/envs/neovim/bin/python3'
+let g:python3_host_prog = '/home/liuyuzhen/anaconda3/bin/python'
 source ~/.config/nvim/plugs.vim
 source ~/.config/nvim/general.vim
 source ~/.config/nvim/plug-config.vim

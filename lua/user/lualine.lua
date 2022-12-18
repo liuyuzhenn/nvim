@@ -62,13 +62,13 @@ local location = {
 lualine.setup {
   options = {
     icons_enabled = true,
-    theme = 'jellybeans',
+    theme = 'nord',
 	component_separators = { left = '|', right = '|'},
 	section_separators = { left = '', right = ''},
 	disabled_filetypes = {
         statusline = {
           "startify",
-          --"dashboard",
+					"dashboard",
           "packer",
           "neogitstatus",
           "NvimTree",

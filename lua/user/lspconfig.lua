@@ -6,22 +6,18 @@ end
 -- key mappings
 local opts = { noremap = true, silent = true }
 vim.keymap.set("n", "<space>e", vim.diagnostic.open_float, opts)
---vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, opts) -- use Lspsaga instead
---vim.keymap.set("n", "]d", vim.diagnostic.goto_next, opts)
 vim.keymap.set("n", "<space>q", vim.diagnostic.setloclist, opts)
 
 local on_attach = function(client, bufnr)
 	-- Enable completion triggered by <c-x><c-o>
-	vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
-
-	-- Mappings.
-	-- See `:help vim.lsp.*` for documentation on any of the below functions
 	local bufopts = { noremap = true, silent = true, buffer = bufnr }
 	vim.keymap.set("n", "gD", vim.lsp.buf.declaration, bufopts)
 	vim.keymap.set("n", "gd", vim.lsp.buf.definition, bufopts)
 	--vim.keymap.set("n", "K", vim.lsp.buf.hover, bufopts)
 	--vim.keymap.set("n", "gi", vim.lsp.buf.implementation, bufopts)
 	vim.keymap.set("n", "<leader>k", vim.lsp.buf.signature_help, bufopts)
+	vim.keymap.set("i", "<A-k>", vim.lsp.buf.signature_help, bufopts)
+
 	--vim.keymap.set("n", "<space>wa", vim.lsp.buf.add_workspace_folder, bufopts)
 	--vim.keymap.set("n", "<space>wr", vim.lsp.buf.remove_workspace_folder, bufopts)
 	--vim.keymap.set("n", "<space>wl", function()
@@ -81,32 +77,49 @@ lspconfig.sumneko_lua.setup({
 lspconfig.cmake.setup({
 	on_attach = on_attach,
 	flags = lsp_flags,
-	--cmd = { "marksman" },
+})
+
+lspconfig.texlab.setup({
+	on_attach = on_attach,
+	flags = lsp_flags,
 })
 
 lspconfig.vimls.setup({
 	on_attach = on_attach,
-	flags = lsp_flags,
-	--cmd = { "marksman" },
+	cmd = { "vim-language-server", "--stdio" },
+	diagnostic = {
+		enable = true
+	},
+	indexes = {
+		count = 3,
+		gap = 100,
+		projectRootPatterns = { "runtime", "nvim", ".git", "autoload", "plugin" },
+		runtimepath = true
+	},
+	isNeovim = true,
+	iskeyword = "@,48-57,_,192-255,-#",
+	runtimepath = "",
+	suggest = {
+		fromRuntimepath = true,
+		fromVimruntime = true
+	},
+	vimruntime = ""
 })
 
 lspconfig.marksman.setup({
 	on_attach = on_attach,
 	flags = lsp_flags,
-	--cmd = { "marksman" },
 })
 
 lspconfig.clangd.setup({
 	on_attach = on_attach,
-	--cmd = { "clangd" },
 })
 
 lspconfig.bashls.setup({
 	on_attach = on_attach,
-	--cmd = { "clangd" },
 })
 
-local signs = { Error = "", Warn = "", Hint = "", Info = "" }
+local signs = { Error = "", Warn = "", Hint = "", Info = "" }
 for type, icon in pairs(signs) do
 	local hl = "DiagnosticSign" .. type
 	vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })

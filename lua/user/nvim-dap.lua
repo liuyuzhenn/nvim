@@ -4,10 +4,11 @@ if not status_ok then
 end
 
 --require('dap-python').setup('~/.virtualenvs/debugpy/bin/python')
-
+local conda_path = "/home/liuyuzhen/anaconda3"
 dap.adapters.python = {
 	type = "executable",
-	command = os.getenv("CONDA_PREFIX") .. "/bin/python",
+	--command = os.getenv("CONDA_PREFIX") .. "/bin/python",
+	command = (os.getenv("CONDA_PREFIX") or conda_path) .. "/bin/python",
 	args = { "-m", "debugpy.adapter" },
 }
 
@@ -21,9 +22,9 @@ dap.configurations.python = {
 		request = "launch",
 		name = "Launch file",
 		console = "integratedTerminal",
-		stopOnEntry = true,
+		stopOnEntry = false,
 		program = "${file}", -- This configuration will launch the current file if used.
-		pythonPath = os.getenv("CONDA_PREFIX") .. "/bin/python",
+		pythonPath = (os.getenv("CONDA_PREFIX") or conda_path) .. "/bin/python",
 		--args = function()
 		--local input = vim.fn.input("Input args: ")
 		--return require("user.dap.dap-util").str2argtable(input)
@@ -46,6 +47,8 @@ vim.cmd([[
 --nnoremap <silent> <leader>di <Cmd>lua require'dap.ui.widgets'.hover()<CR>
 --nnoremap <silent> <leader>dp <Cmd>lua require'dap.ui.widgets'.preview()<CR>
 
-vim.fn.sign_define("DapBreakpoint", { text = "🛑", texthl = "", linehl = "", numhl = "" })
-vim.fn.sign_define("DapStopped", { text = "⭐️", texthl = "", linehl = "", numhl = "" })
+vim.fn.sign_define("DapBreakpoint", { text = "🔴", texthl = "", linehl = "", numhl = "" })
+--vim.fn.sign_define("DapStopped", { text = "⭐️", texthl = "", linehl = "", numhl = "" })
+vim.fn.sign_define("DapStopped", { text = "🦄", texthl = "", linehl = "", numhl = "" })
+vim.fn.sign_define("DapBreakpointCondition", { text = "🟡", texthl = "", linehl = "", numhl = "" })
 vim.fn.sign_define("DapBreakpointRejected", { text = "", texthl = "", linehl = "", numhl = "" })

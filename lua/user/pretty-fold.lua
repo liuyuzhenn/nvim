@@ -14,7 +14,7 @@ local config = {
 		right = {
 		}
 	},
-	fill_char = '-',
+	fill_char = '─',
 
 	remove_fold_markers = true,
 

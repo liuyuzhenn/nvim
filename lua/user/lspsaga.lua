@@ -9,7 +9,7 @@ saga.init_lsp_saga()
 
 keymap("n", "gh", "<cmd>Lspsaga lsp_finder<CR>", { silent = true })
 keymap("n", "gp", "<cmd>Lspsaga peek_definition<CR>", { silent = true })
-keymap("n", "<leader>o", "<cmd>LSoutlineToggle<CR>", { silent = true })
+keymap("n", "<leader>o", "<cmd>Lspsaga outline<CR>", { silent = true })
 keymap("n", "K", "<cmd>Lspsaga hover_doc<CR>", { silent = true })
 
 -- Code action
@@ -44,4 +44,4 @@ keymap("n", "]e", "<cmd>Lspsaga diagnostic_jump_next<CR>", { silent = true })
 -- open lazygit in lspsaga float terminal
 --keymap("n", "<A-d>", "<cmd>Lspsaga open_floaterm lazygit<CR>", { silent = true })
 -- close floaterm
-keymap("t", "<leader>e", [[<C-\><C-n><cmd>Lspsaga close_floaterm<CR>]], { silent = true })
+--keymap("t", "<leader>e", [[<C-\><C-n><cmd>Lspsaga close_floaterm<CR>]], { silent = true })

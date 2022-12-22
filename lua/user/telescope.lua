@@ -10,7 +10,7 @@ end
 
 local fb_actions = require("telescope").extensions.file_browser.actions
 
-telescope.setup {
+telescope.setup({
 	defaults = {
 		entry_prefix = "  ",
 		initial_mode = "insert",
@@ -62,19 +62,46 @@ telescope.setup {
 	},
 	pickers = {
 		find_files = {
-			theme = 'dropdown',
+			theme = "dropdown",
 			previewer = false,
-			find_command = { 'find' },
-			prompt_prefix = "🔍"
+			find_command = { "fdfind" },
+			prompt_prefix = "🔍",
 		},
 	},
 	extensions = {
+		bookmarks = {
+			-- Available:
+			--  * 'chrome'
+			--  * 'edge'
+			--  * 'firefox'
+			selected_browser = "chrome",
+			-- Either provide a shell command to open the URL
+			url_open_command = nil,
+
+			-- Or provide the plugin name which is already installed
+			-- Available: 'vim_external', 'open_browser'
+			url_open_plugin = "open_browser",
+			-- Show the full path to the bookmark instead of just the bookmark name
+			full_path = true,
+
+			-- Provide a custom profile name for Firefox browser
+			firefox_profile_name = nil,
+
+			-- Provide a custom profile name for Waterfox browser
+			waterfox_profile_name = nil,
+
+			-- Add a column which contains the tags for each bookmark for buku
+			buku_include_tags = false,
+
+			-- Provide debug messages
+			debug = false,
+		},
 		file_browser = {
 			theme = "dropdown",
 			--path = "%:p:h",
 			previewer = false,
 			hidden = false,
-			initial_mode = "insert",
+			initial_mod = "insert",
 			hijach_netw = false,
 			--layerout_config = { height = 40 },
 			mappings = {
@@ -89,24 +116,25 @@ telescope.setup {
 			action = function(emoji)
 				-- argument emoji is a table.
 				-- {name="", value="", cagegory="", description=""}
-
 				vim.fn.setreg("*", emoji.value)
 				print([[Press p or "*p to paste this emoji]] .. emoji.value)
 				-- insert emoji when picked
-				vim.api.nvim_put({ emoji.value }, 'c', false, true)
+				vim.api.nvim_put({ emoji.value }, "c", false, true)
 			end,
 		},
+		luasnip = {}, -- BUG: required
 	},
-}
+})
 
-local builtin = require('telescope.builtin')
-local extensions = require('telescope').extensions
-vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
-vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
-vim.keymap.set('n', '<leader>fh', builtin.commands, {})
-vim.keymap.set('n', '<leader>ft', builtin.treesitter, {})
-vim.keymap.set('n', '<leader>fc', builtin.grep_string, {})
+local builtin = require("telescope.builtin")
+local extensions = require("telescope").extensions
+vim.keymap.set("n", "<leader>ff", builtin.find_files, {})
+vim.keymap.set("n", "<leader>fg", builtin.live_grep, {})
+vim.keymap.set("n", "<leader>fh", builtin.commands, {})
+vim.keymap.set("n", "<leader>ft", builtin.treesitter, {})
+vim.keymap.set("n", "<leader>fc", builtin.grep_string, {})
 vim.keymap.set("n", "<leader>fb", extensions.file_browser.file_browser, {})
+vim.keymap.set("n", "<leader>fm", extensions.bookmarks.bookmarks, {})
 vim.keymap.set("n", "<leader>fs", "<Cmd>SearchSession<CR>", {})
 
 -- To get telescope-file-browser loaded and woforirking with telescope,
@@ -115,4 +143,6 @@ telescope.load_extension("file_browser")
 telescope.load_extension("emoji")
 telescope.load_extension("dap")
 telescope.load_extension("session-lens")
-telescope.load_extension("ultisnips")
+telescope.load_extension("luasnip")
+telescope.load_extension("bookmarks")
+--require("telescope").extensions.luasnip.luasnip(require("telescope.themes").get_ivy({}))

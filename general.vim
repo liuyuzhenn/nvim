@@ -25,6 +25,7 @@ set foldlevel=9999
 set foldminlines=5
 set nobackup
 set signcolumn=yes
+set clipboard+=unnamedplus
 nmap <A-d> <Cmd>Bdelete<CR>
 
 " NORMAL MODE
@@ -52,8 +53,10 @@ nnoremap <A-h> <Cmd>bN<CR>
 nnoremap <A-l> <Cmd>bn<CR>
 nnoremap <S-tab> <Cmd>bN<CR>
 nnoremap <tab> <Cmd>bn<CR>
-map H ^
-map L $
+nmap H ^
+nmap L $
+nmap yl y$
+nmap yh y^
 nnoremap ZZ :wa<CR>:qa<CR>
 
 nmap <silent><leader>n <Cmd>noh<CR>
@@ -69,5 +72,5 @@ map <down> :res -3<CR>
 map <left> :vertical resize -3<CR>
 map <right> :vertical resize +3<CR>
 map J <nop>
-map <C-c> <ESC>
+"map <C-c> <ESC>
 

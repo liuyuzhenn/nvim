@@ -3,20 +3,20 @@ if not status_ok then
 	return
 end
 
-local status_ok, dap = pcall(require, "dap")
-if not status_ok then
+local status, dap = pcall(require, "dap")
+if not status then
 	return
 end
 
 dap.listeners.after.event_initialized["dapui_config"] = function()
 	dapui.open()
 end
-dap.listeners.before.event_terminated["dapui_config"] = function()
-	dapui.close()
-end
-dap.listeners.before.event_exited["dapui_config"] = function()
-	dapui.close()
-end
+--dap.listeners.before.event_terminated["dapui_config"] = function()
+--dapui.close()
+--end
+--dap.listeners.before.event_exited["dapui_config"] = function()
+--dapui.close()
+--end
 
 dapui.setup({
 	icons = { expanded = "", collapsed = "", current_frame = "" },
@@ -31,22 +31,12 @@ dapui.setup({
 	},
 	-- Use this to override mappings for specific elements
 	element_mappings = {
-		-- Example:
 		-- stacks = {
 		--   open = "<CR>",
 		--   expand = "o",
 		-- }
 	},
-	-- Expand lines larger than the window
-	-- Requires >= 0.7
 	expand_lines = vim.fn.has("nvim-0.7") == 1,
-	-- Layouts define sections of the screen to place windows.
-	-- The position can be "left", "right", "top" or "bottom".
-	-- The size specifies the height/width depending on position. It can be an Int
-	-- or a Float. Integer specifies height/width directly (i.e. 20 lines/columns) while
-	-- Float value specifies percentage (i.e. 0.3 - 30% of available lines/columns)
-	-- Elements are the elements shown in the layout (in order).
-	-- Layouts are opened in order so that earlier layouts take priority in window sizing.
 	layouts = {
 		{
 			elements = {
@@ -61,8 +51,8 @@ dapui.setup({
 		},
 		{
 			elements = {
-				{ id = "repl", size = 0.7 },
-				{ id = "console", size = 0.3 },
+				{ id = "repl", size = 0.6 },
+				{ id = "console", size = 0.4 },
 			},
 			size = 0.22, -- 25% of total lines
 			position = "right",
@@ -78,7 +68,7 @@ dapui.setup({
 	},
 	controls = {
 		-- Requires Neovim nightly (or 0.8 when released)
-		enabled = false,
+		enabled = true,
 		-- Display controls in this element
 		element = "console",
 		icons = {
@@ -100,7 +90,8 @@ dapui.setup({
 })
 
 vim.cmd([[
-	vnoremap <F3> <Cmd>lua require("dapui").eval()<CR>
-	nnoremap <F3> <Cmd>lua require("dapui").eval()<CR>
+	vnoremap <A-k> <Cmd>lua require("dapui").eval()<CR>
+	nnoremap <A-k> <Cmd>lua require("dapui").eval()<CR>
 	nnoremap <leader>dp <Cmd>lua require("dapui").toggle()<CR>
+	nnoremap <leader>do <Cmd>lua require("dapui").toggle({reset=true})<CR>
 ]])

@@ -13,10 +13,7 @@ cmp.setup({
 	snippet = {
 		-- REQUIRED - you must specify a snippet engine
 		expand = function(args)
-			--vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
-			-- require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
-			-- require('snippy').expand_snippet(args.body) -- For `snippy` users.
-			vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
+			require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
 		end,
 	},
 	window = {
@@ -31,17 +28,18 @@ cmp.setup({
 		["<C-j>"] = cmp.mapping(cmp.mapping.select_next_item(), { "i", "c" }),
 		["<C-u>"] = cmp.mapping(cmp.mapping.scroll_docs(-8), { "i", "c" }),
 		["<C-d>"] = cmp.mapping(cmp.mapping.scroll_docs(8), { "i", "c" }),
-		["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
+		["<C-Space>"] = cmp.mapping(cmp.mapping.complete({
+			config = {
+				sources = { { name = 'luasnip' } }
+			}
+		}), { "i", "c" }),
 		["<C-e>"] = cmp.mapping(cmp.mapping.abort(), { "i", "c" }),
 		["<Tab>"] = cmp.mapping(cmp.mapping.confirm({ select = true }), { "i", "c" }),
 	}),
 	sources = cmp.config.sources({
 		{ name = "path" },
-		{ name = "nvim_lsp" },
-		{ name = "ultisnips" }, -- For ultisnips users.
-		--{ name = "vsnip" }, -- For vsnip users.
-		-- { name = 'luasnip' }, -- For luasnip users.
-		-- { name = 'snippy' }, -- For snippy users.
+		{ name = "nvim_lsp", keyword_length = 2 },
+		{ name = 'luasnip' },
 		{ name = "buffer" },
 	}),
 })
@@ -75,6 +73,6 @@ cmp.setup.cmdline(":", {
 	sources = cmp.config.sources({
 		{ name = "path" },
 	}, {
-		{ name = "cmdline" },
+		{ name = 'cmdline', keyword_pattern = [=[[^[:blank:]\!]*]=], keyword_length = 4 }
 	}),
 })

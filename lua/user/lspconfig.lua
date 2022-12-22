@@ -34,7 +34,7 @@ local on_attach = function(client, bufnr)
 	vim.cmd([[
 		augroup Format
 		autocmd! * <buffer>
-		autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_seq_sync()
+		autocmd BufWritePre <buffer> lua vim.lsp.buf.format()
 		augroup end
 	]])
 end
@@ -48,7 +48,7 @@ lspconfig.pyright.setup({
 	on_attach = on_attach,
 	flags = lsp_flags,
 	settings = {
-		include = { '${workspaceFolder}' },
+		include = { "${workspaceFolder}" },
 		python = {
 			analysis = {
 				diagnosticSeverityOverrides = {
@@ -88,22 +88,22 @@ lspconfig.vimls.setup({
 	on_attach = on_attach,
 	cmd = { "vim-language-server", "--stdio" },
 	diagnostic = {
-		enable = true
+		enable = true,
 	},
 	indexes = {
 		count = 3,
 		gap = 100,
 		projectRootPatterns = { "runtime", "nvim", ".git", "autoload", "plugin" },
-		runtimepath = true
+		runtimepath = true,
 	},
 	isNeovim = true,
 	iskeyword = "@,48-57,_,192-255,-#",
 	runtimepath = "",
 	suggest = {
 		fromRuntimepath = true,
-		fromVimruntime = true
+		fromVimruntime = true,
 	},
-	vimruntime = ""
+	vimruntime = "",
 })
 
 lspconfig.marksman.setup({
@@ -117,6 +117,17 @@ lspconfig.clangd.setup({
 
 lspconfig.bashls.setup({
 	on_attach = on_attach,
+	flags = lsp_flags,
+})
+
+lspconfig.yamlls.setup({
+	on_attach = on_attach,
+	flags = lsp_flags,
+})
+
+lspconfig.jsonls.setup({
+	on_attach = on_attach,
+	flags = lsp_flags,
 })
 
 local signs = { Error = "", Warn = "", Hint = "", Info = "" }

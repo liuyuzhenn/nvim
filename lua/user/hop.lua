@@ -5,25 +5,16 @@ end
 local directions = require('hop.hint').HintDirection
 
 -- replace default neovim mapping
-vim.keymap.set('', 'f', function()
+vim.keymap.set({ "n" }, 'f', function()
 	hop.hint_char1({ direction = directions.AFTER_CURSOR, current_line_only = true })
 end, { remap = true })
-vim.keymap.set('', 'F', function()
+vim.keymap.set({ "n" }, 'F', function()
 	hop.hint_char1({ direction = directions.BEFORE_CURSOR, current_line_only = true })
 end, { remap = true })
-vim.keymap.set('', 't', function()
-	hop.hint_char1({ direction = directions.AFTER_CURSOR, current_line_only = true, hint_offset = -1 })
-end, { remap = true })
-vim.keymap.set('', 'T', function()
-	hop.hint_char1({ direction = directions.BEFORE_CURSOR, current_line_only = true, hint_offset = 1 })
-end, { remap = true })
 
-vim.keymap.set('', '<leader>s', ':HopChar2<CR>', { silent = true, noremap = true })
---vim.keymap.set('', '<leader>l', ':HopLine<CR>', { silent=true, noremap=true})
-vim.keymap.set('', '<leader>j', ':HopLine<CR>', { silent = true, noremap = true })
-vim.keymap.set('', '<leader>w', ':HopWord<CR>', { silent = true, noremap = true })
---vim.keymap.set('', '<leader>j', ':HopWordAC<CR>', { silent=true, noremap=true})
---vim.keymap.set('', '<leader>k', ':HopWordBC<CR>', { silent=true, noremap=true})
+vim.keymap.set({ "n", "v" }, '<leader>s', '<Cmd>HopChar2<CR>', { silent = true, noremap = true })
+vim.keymap.set({ "n", "v" }, '<leader>j', '<Cmd>HopLine<CR>', { silent = true, noremap = true })
+vim.keymap.set({ "n", "v" }, '<leader>w', '<Cmd>HopWord<CR>', { silent = true, noremap = true })
 
 hop.setup {
 	quit_key = '<leader>',

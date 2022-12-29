@@ -37,6 +37,7 @@ vim.cmd([[
     nnoremap <silent> <F4> <Cmd>lua require'dap'.run_to_cursor()<CR>
     nnoremap <silent> <F5> <Cmd>lua require'dap'.continue()<CR>
     nnoremap <silent> <F6> <Cmd>lua require'dap'.terminate()<CR>
+    nnoremap <silent> <leader>dc <Cmd>lua require'dap'.set_breakpoint(vim.fn.input '[Condition] > ')<CR>
     nnoremap <silent> <leader>dd <Cmd>lua require'dap'.toggle_breakpoint()<CR>
     nnoremap <silent> <leader>dr <Cmd>lua require'dap'.repl.toggle({},'vsplit')<CR>
 ]])

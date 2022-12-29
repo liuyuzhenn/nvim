@@ -53,10 +53,11 @@ nnoremap <A-h> <Cmd>bN<CR>
 nnoremap <A-l> <Cmd>bn<CR>
 nnoremap <S-tab> <Cmd>bN<CR>
 nnoremap <tab> <Cmd>bn<CR>
-nmap H ^
-nmap L $
+map H ^
+map L $
 nmap yl y$
 nmap yh y^
+nmap dl d$
 nnoremap ZZ :wa<CR>:qa<CR>
 
 nmap <silent><leader>n <Cmd>noh<CR>

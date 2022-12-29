@@ -3,6 +3,8 @@ if not status then
 	return
 end
 
+local util = lspconfig.util
+
 -- key mappings
 local opts = { noremap = true, silent = true }
 vim.keymap.set("n", "<space>e", vim.diagnostic.open_float, opts)
@@ -82,6 +84,9 @@ lspconfig.cmake.setup({
 lspconfig.texlab.setup({
 	on_attach = on_attach,
 	flags = lsp_flags,
+	--root_dir = util.find_git_ancestor,
+	root_dir = util.root_pattern("*.tex"),
+	cmd = { "texlab" }
 })
 
 lspconfig.vimls.setup({

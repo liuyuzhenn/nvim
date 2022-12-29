@@ -4,7 +4,6 @@ if not status then
 end
 local lspkind = require("lspkind")
 
-
 cmp.setup({
 	preselect = cmp.PreselectMode.None,
 	enabled = function()
@@ -13,7 +12,7 @@ cmp.setup({
 	snippet = {
 		-- REQUIRED - you must specify a snippet engine
 		expand = function(args)
-			require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
+			require("luasnip").lsp_expand(args.body) -- For `luasnip` users.
 		end,
 	},
 	window = {
@@ -21,25 +20,29 @@ cmp.setup({
 		-- documentation = cmp.config.window.bordered(),
 	},
 	formatting = {
-		format = lspkind.cmp_format({ wirth_text = false, maxwidth = 50 })
+		format = lspkind.cmp_format({ wirth_text = false, maxwidth = 50 }),
 	},
 	mapping = cmp.mapping.preset.insert({
 		["<C-k>"] = cmp.mapping(cmp.mapping.select_prev_item(), { "i", "c" }),
 		["<C-j>"] = cmp.mapping(cmp.mapping.select_next_item(), { "i", "c" }),
 		["<C-u>"] = cmp.mapping(cmp.mapping.scroll_docs(-8), { "i", "c" }),
 		["<C-d>"] = cmp.mapping(cmp.mapping.scroll_docs(8), { "i", "c" }),
-		["<C-Space>"] = cmp.mapping(cmp.mapping.complete({
-			config = {
-				sources = { { name = 'luasnip' } }
-			}
-		}), { "i", "c" }),
-		["<C-e>"] = cmp.mapping(cmp.mapping.abort(), { "i", "c" }),
+		["<C-Space>"] = cmp.mapping(
+			cmp.mapping.complete({
+				config = {
+					sources = { { name = "luasnip" } },
+				},
+			}),
+			{ "i", "c" }
+		),
+		["<C-E>"] = cmp.mapping(cmp.mapping.abort(), { "i", "c" }),
 		["<Tab>"] = cmp.mapping(cmp.mapping.confirm({ select = true }), { "i", "c" }),
 	}),
 	sources = cmp.config.sources({
 		{ name = "path" },
+		{ name = "omni" },
 		{ name = "nvim_lsp", keyword_length = 2 },
-		{ name = 'luasnip' },
+		{ name = "luasnip" },
 		{ name = "buffer" },
 	}),
 })
@@ -73,6 +76,6 @@ cmp.setup.cmdline(":", {
 	sources = cmp.config.sources({
 		{ name = "path" },
 	}, {
-		{ name = 'cmdline', keyword_pattern = [=[[^[:blank:]\!]*]=], keyword_length = 4 }
+		{ name = "cmdline", keyword_pattern = [=[[^[:blank:]\!]*]=], keyword_length = 4 },
 	}),
 })

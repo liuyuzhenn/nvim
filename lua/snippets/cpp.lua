@@ -20,28 +20,8 @@ local types = require("luasnip.util.types")
 local conds = require("luasnip.extras.expand_conditions")
 
 local snippets = {
-	s({ trig = "cfgpy", dscr = "lauch.json configuration template" }, {
-		t({
-			'			"name": "lambda",',
-			'			"type": "python",',
-			'			"request": "launch",',
-			'			"stopOnEntry": false,',
-			'			"pythonPath": "~/anaconda3/bin/python",',
-			'			"program": "${file}",',
-			'			"console": "integratedTerminal",',
-			'			"args": []',
-		})
-	}),
-	s({ trig = "cfgcpp", dscr = "lauch.json configuration template" }, {
-		t({
-			'			"name": "lambda",',
-			'			"type": "cppdbg",',
-			'			"request": "launch",',
-			'			"stopOnEntry": false,',
-			'			"cwd": "${workspaceFolder}",',
-			'			"program": "${workspaceFolder}/build/bin/main",',
-			'			"args": []',
-		})
+	s({ trig = "cout" }, {
+		t({ "std::cout << " }), i(1), t({ " << std::endl;" })
 	}),
 }
 

@@ -1,17 +1,7 @@
-"if has_key(g:plugs, "ultisnips")
-	"let g:UltiSnipsSnippetDirectories=['UltiSnips']
-	"let g:UltiSnipsExpandTrigger='<c-w>'
-	"let g:UltiSnipsJumpForwardTrigger='<c-l>'
-	"let g:UltiSnipsJumpBackwardTrigger='<c-h>'
-	"let g:snips_author='liuyuzhen'
-	"let g:snips_email='liuyuzhen22@mails.ucas.ac.cn'
-	"let g:snips_github='https://github.com/liuyuzhenn'
-"endif
-
 if has_key(g:plugs, "vim-maximizer")
-	nnoremap <leader>m :MaximizerToggle<CR>
+	nnoremap <silent><leader>m <Cmd>MaximizerToggle<CR>
+	let g:maximizer_default_mapping_key = ''
 endif
-"hi DashboardHeader guifg=1 guibg=3 
 
 lua require('user.mason')
 lua require('user.telescope')
@@ -31,6 +21,7 @@ lua require('user.lsp-signature')
 lua require('user.pretty-fold')
 lua require('user.formatter')
 lua require('user.luasnip')
+lua require('user.cmd')
 
 lua require('user.nvim-dap')
 lua require('user.dap-virtual-text')

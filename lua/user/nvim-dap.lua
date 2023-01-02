@@ -48,7 +48,7 @@ dap.configurations.cpp = {
 	}
 }
 
-require("dap.ext.vscode").load_launchjs()
+require("dap.ext.vscode").load_launchjs(nil, { cppdbg = { "cpp" } })
 
 vim.cmd([[
     nnoremap <silent> <F1> <Cmd>lua require'dap'.step_into()<CR>
@@ -60,6 +60,7 @@ vim.cmd([[
     nnoremap <silent> <leader>dc <Cmd>lua require'dap'.set_breakpoint(vim.fn.input '[Condition] > ')<CR>
     nnoremap <silent> <leader>dd <Cmd>lua require'dap'.toggle_breakpoint()<CR>
     nnoremap <silent> <leader>dr <Cmd>lua require'dap'.repl.toggle({},'vsplit')<CR>
+		nnoremap  <leader>lj <Cmd>lua require("dap.ext.vscode").load_launchjs(nil, { cppdbg = { "cpp" } })<CR>
 ]])
 
 

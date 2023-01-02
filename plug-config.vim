@@ -22,6 +22,7 @@ lua require('user.pretty-fold')
 lua require('user.formatter')
 lua require('user.luasnip')
 lua require('user.cmd')
+lua require('user.comment')
 
 lua require('user.nvim-dap')
 lua require('user.dap-virtual-text')

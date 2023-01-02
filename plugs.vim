@@ -66,7 +66,7 @@ if !exists('g:vscode')
 endif
 
 Plug 'phaazon/hop.nvim'
-Plug 'preservim/nerdcommenter'
+Plug 'numToStr/Comment.nvim'
 Plug 'gcmt/wildfire.vim'
 Plug 'tpope/vim-surround'
 Plug 'L3MON4D3/LuaSnip', {'tag': 'v<CurrentMajor>.*'}

@@ -8,6 +8,10 @@ if has_key(g:plugs, "ultisnips")
 	let g:snips_github='https://github.com/liuyuzhenn'
 endif
 
+if has_key(g:plugs, "vim-maximizer")
+	nnoremap <silent><leader>m <Cmd>MaximizerToggle<CR>
+	let g:maximizer_default_mapping_key = ''
+endif
 
 lua require('user.mason')
 lua require('user.telescope')
@@ -30,12 +34,11 @@ lua require('user.todo-comments')
 lua require('user.auto-session')
 lua require('user.nvim-notify')
 lua require('user.pretty-fold')
-"lua require('user.maximize')
-"lua require('user.coc')
 lua require('user.vimtex')
 lua require('user.lspconfig')
 lua require('user.lsp-signature')
 lua require('user.nvim-cmp')
 lua require('user.lspkind')
 lua require('user.lspsaga')
+lua require('user.comment')
 

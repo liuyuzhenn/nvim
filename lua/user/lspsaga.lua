@@ -44,4 +44,4 @@ keymap("n", "]e", "<cmd>Lspsaga diagnostic_jump_next<CR>", { silent = true })
 -- open lazygit in lspsaga float terminal
 --keymap("n", "<A-d>", "<cmd>Lspsaga open_floaterm lazygit<CR>", { silent = true })
 -- close floaterm
-keymap("t", "<leader>e", [[<C-\><C-n><cmd>Lspsaga close_floaterm<CR>]], { silent = true })
+--keymap("t", "<leader>e", [[<C-\><C-n><cmd>Lspsaga close_floaterm<CR>]], { silent = true })

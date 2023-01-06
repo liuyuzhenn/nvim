@@ -117,22 +117,28 @@ lspconfig.vimls.setup({
 	on_attach = on_attach,
 	cmd = { "vim-language-server.cmd", "--stdio" },
 	diagnostic = {
-		enable = true
+		enable = true,
 	},
 	indexes = {
 		count = 3,
 		gap = 100,
 		projectRootPatterns = { "runtime", "nvim", ".git", "autoload", "plugin" },
-		runtimepath = true
+		runtimepath = true,
 	},
 	isNeovim = true,
 	iskeyword = "@,48-57,_,192-255,-#",
 	runtimepath = "",
 	suggest = {
 		fromRuntimepath = true,
-		fromVimruntime = true
+		fromVimruntime = true,
 	},
-	vimruntime = ""
+	vimruntime = "",
+})
+
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities.textDocument.completion.completionItem.snippetSupport = true
+lspconfig.jsonls.setup({
+	capabilities = capabilities,
 })
 
 local signs = { Error = "", Warn = "", Hint = "", Info = "" }

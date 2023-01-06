@@ -15,15 +15,11 @@ dap.configurations.python = {
 		-- The first three options are required by nvim-dap
 		type = "python", -- the type here established the link to the adapter definition: `dap.adapters.python`
 		request = "launch",
-		name = "Launch file",
+		name = "default",
 		console = "integratedTerminal",
 		stopOnEntry = false,
 		program = "${file}", -- This configuration will launch the current file if used.
 		pythonPath = os.getenv("CONDA_PREFIX") .. "/python.exe",
-		--args = function()
-		--local input = vim.fn.input("Input args: ")
-		--return require("user.dap.dap-util").str2argtable(input)
-		--end,
 	},
 }
 
@@ -85,6 +81,7 @@ dap.configurations.lua = {
 	},
 }
 
+require('dap.ext.vscode').load_launchjs()
 
 vim.cmd([[
     nnoremap <silent> <F1> <Cmd>lua require'dap'.step_into()<CR>

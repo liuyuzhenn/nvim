@@ -77,8 +77,8 @@ if !exists('g:vscode')
 	Plug 'tanvirtin/monokai.nvim'
 endif
 
-"Plug 'asvetliakov/vim-easymotion', Cond(exists('g:vscode'), { 'as': 'vsc-easymotion' })
-Plug 'preservim/nerdcommenter'
+"Plug 'preservim/nerdcommenter'
+Plug 'numToStr/Comment.nvim'
 Plug 'gcmt/wildfire.vim'
 Plug 'tpope/vim-surround'
 Plug 'liuyuzhenn/vim-snippets'

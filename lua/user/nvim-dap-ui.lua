@@ -61,11 +61,11 @@ dapui.setup({
 		},
 		{
 			elements = {
-				{ id = "repl", size = 0.65 },
-				{ id = "console", size = 0.35 },
+				{ id = "repl", size = 0.60 },
+				{ id = "console", size = 0.40 },
 			},
 			size = 0.22, -- 25% of total lines
-			position = "right",
+			position = "bottom",
 		},
 	},
 	floating = {

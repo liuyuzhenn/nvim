@@ -5,7 +5,7 @@ end
 
 dap.adapters.python = {
 	type = "executable",
-	command = os.getenv("CONDA_PREFIX") .. "/python.exe",
+	command = os.getenv("CONDA_EXE") .. "/../../python.exe",
 	args = { "-m", "debugpy.adapter" },
 }
 
@@ -19,7 +19,7 @@ dap.configurations.python = {
 		console = "integratedTerminal",
 		stopOnEntry = false,
 		program = "${file}", -- This configuration will launch the current file if used.
-		pythonPath = os.getenv("CONDA_PREFIX") .. "/python.exe",
+		pythonPath = os.getenv("CONDA_PREFIX") and (os.getenv("CONDA_PREFIX") .. "/python.exe"),
 	},
 }
 

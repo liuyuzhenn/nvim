@@ -61,8 +61,15 @@ map J <nop>
 map K <nop>
 let $TMP="C:/Users/23792/.tmp"
 "map <C-c> <ESC>
-
-lua require('user.autocmd')
+nmap dii di'
+nmap diI di"
+nmap cii ci'
+nmap ciI ci"
+nmap yii yi'
+nmap yiI yi"
+nmap yl y$
+nmap yh y^
+nmap dl d$
 
 if !exists('g:vscode')
 	nmap R :source $MYVIMRC<CR>

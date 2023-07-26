@@ -22,17 +22,19 @@ formatter.setup({
 		-- and will be executed in order
 		lua = { require("formatter.filetypes.lua").stylua },
 		python = { require("formatter.filetypes.python").autopep8 },
-		cpp = { {
-			exe = "clang-format",
-			args = {
-				"-assume-filename",
-				util.escape_path(util.get_current_buffer_file_name()),
-				"--style",
-				"Microsoft"
+		cpp = {
+			{
+				exe = "clang-format",
+				args = {
+					"-assume-filename",
+					util.escape_path(util.get_current_buffer_file_name()),
+					"--style",
+					"Microsoft",
+				},
+				stdin = true,
+				try_node_modules = true,
 			},
-			stdin = true,
-			try_node_modules = true,
-		} },
+		},
 		-- Use the special "*" filetype for defining formatter configurations on any filetype
 		["*"] = {
 			require("formatter.filetypes.any").remove_trailing_whitespace,

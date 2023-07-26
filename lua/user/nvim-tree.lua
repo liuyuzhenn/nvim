@@ -54,11 +54,6 @@ vim.opt.termguicolors = true
 nvim_tree.setup({
 	auto_reload_on_write = false,
 	update_cwd = true,
-	ignore_ft_on_setup = {
-		"startify",
-		"dashboard",
-		"alpha",
-	},
 	diagnostics = {
 		enable = true,
 		icons = {

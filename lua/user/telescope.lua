@@ -64,7 +64,7 @@ telescope.setup({
 		find_files = {
 			theme = "dropdown",
 			previewer = false,
-			find_command = { "fd", "-I" },
+			find_command = { "fd", "-H", "-E", ".git" },
 			prompt_prefix = "🔍",
 		},
 	},
@@ -140,13 +140,15 @@ vim.keymap.set("n", "<leader>ft", builtin.treesitter, {})
 vim.keymap.set("n", "<leader>fc", builtin.grep_string, {})
 vim.keymap.set("n", "<leader>fb", extensions.file_browser.file_browser, {})
 vim.keymap.set("n", "<leader>fm", extensions.bookmarks.bookmarks, {})
+vim.keymap.set("n", "<leader>em", extensions.emoji.emoji, {})
 vim.keymap.set("n", "<leader>fs", "<Cmd>SearchSession<CR>", {})
 
 -- To get telescope-file-browser loaded and woforirking with telescope,
 -- you need to call load_extension, somewhere after setup function:
 telescope.load_extension("file_browser")
-telescope.load_extension("ultisnips")
+-- telescope.load_extension("ultisnips")
 telescope.load_extension("emoji")
 telescope.load_extension("bookmarks")
 telescope.load_extension("dap")
 telescope.load_extension("session-lens")
+telescope.load_extension("luasnip")

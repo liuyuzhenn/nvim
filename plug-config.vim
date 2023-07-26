@@ -1,13 +1,3 @@
-if has_key(g:plugs, "ultisnips")
-	let g:UltiSnipsSnippetDirectories=['UltiSnips']
-	let g:UltiSnipsExpandTrigger='<c-w>'
-	let g:UltiSnipsJumpForwardTrigger='<c-l>'
-	let g:UltiSnipsJumpBackwardTrigger='<c-h>'
-	let g:snips_author='liuyuzhen'
-	let g:snips_email='liuyuzhen22@mails.ucas.ac.cn'
-	let g:snips_github='https://github.com/liuyuzhenn'
-endif
-
 if has_key(g:plugs, "vim-maximizer")
 	nnoremap <silent><leader>m <Cmd>MaximizerToggle<CR>
 	let g:maximizer_default_mapping_key = ''
@@ -41,4 +31,8 @@ lua require('user.nvim-cmp')
 lua require('user.lspkind')
 lua require('user.lspsaga')
 lua require('user.comment')
+lua require('user.autocmd')
+lua require('user.luasnip')
+lua require('user.notify')
+
 

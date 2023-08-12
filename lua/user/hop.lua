@@ -20,7 +20,7 @@ end, { remap = true })
 
 vim.keymap.set({ "n", "v" }, "<leader>s", "<cmd>HopChar2<CR>", { silent = true, noremap = true })
 vim.keymap.set({ "n", "v" }, "<leader>j", "<cmd>HopLine<CR>", { silent = true, noremap = true })
-vim.keymap.set({ "n", "v" }, "<leader>w", "<cmd>HopWord<CR>", { silent = true, noremap = true })
+vim.keymap.set({ "n", "v" }, "<leader>w", "<cmd>HopWordCurrentLine<CR>", { silent = true, noremap = true })
 --vim.keymap.set('', '<leader>j', ':HopWordAC<CR>', { silent=true, noremap=true})
 --vim.keymap.set('', '<leader>k', ':HopWordBC<CR>', { silent=true, noremap=true})
 

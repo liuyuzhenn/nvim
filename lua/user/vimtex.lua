@@ -1,5 +1,5 @@
 vim.cmd [[
-	let g:vimtex_view_general_viewer = 'C:\Users\23792\AppData\Local\SumatraPDF\SumatraPDF.exe'
+	let g:vimtex_view_general_viewer = 'C:\Users\liuyuzhen\AppData\Local\SumatraPDF\SumatraPDF.exe'
 	let g:vimtex_view_general_options = '-reuse-instance -forward-search @tex @line @pdf'
 	" set conceallevel=1
   let g:vimtex_syntax_enabled = 0

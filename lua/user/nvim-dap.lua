@@ -5,7 +5,7 @@ end
 
 dap.adapters.python = {
 	type = "executable",
-	command = os.getenv("CONDA_EXE") .. "/../../python.exe",
+	command = "C:/Users/liuyuzhen/anaconda3/python.exe",
 	args = { "-m", "debugpy.adapter" },
 }
 
@@ -23,7 +23,7 @@ dap.configurations.python = {
 	},
 }
 
-local base_dir = 'C:/Users/23792/.vscode/extensions/ms-vscode.cpptools-1.13.5-win32-x64/debugAdapters/'
+local base_dir = 'C:/Users/liuyuzhen/.vscode/extensions/ms-vscode.cpptools-1.17.1-win32-x64/debugAdapters/'
 
 dap.adapters.cppvsdbg = {
 	id = 'cppvsdbg',
@@ -53,7 +53,7 @@ dap.adapters.lua = function(callback, config)
 	callback({
 		type = "server",
 		host = config.host,
-		command = "C:/Users/23792/.vscode/extensions/actboy168.lua-debug-1.60.1-win32-x64/bin/lua-debug.exe",
+		command = "C:/Users/liuyuzhen/.vscode/extensions/actboy168.lua-debug-1.60.1-win32-x64/bin/lua-debug.exe",
 		port = config.port,
 	})
 end

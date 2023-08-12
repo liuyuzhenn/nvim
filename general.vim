@@ -4,6 +4,9 @@ let mapleader = "\<space>"
 " change default shell to pwshell
 "set shell=pwsh.exe
 "set shellcmdflag=-c
+set fileencodings=utf-8,ucs-bom,gb18030,gbk,gb2312,cp936
+set termencoding=utf-8
+set encoding=utf-8
 set nocompatible              " be iMproved, required
 set backspace=indent,eol,start
 set showcmd
@@ -59,7 +62,7 @@ map <left> :vertical resize -3<CR>
 map <right> :vertical resize +3<CR>
 map J <nop>
 map K <nop>
-let $TMP="C:/Users/23792/.tmp"
+let $TMP="C:/Users/liuyuzhen/.tmp"
 "map <C-c> <ESC>
 nmap dii di'
 nmap diI di"

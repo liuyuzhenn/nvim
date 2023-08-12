@@ -5,7 +5,7 @@ end
 
 local home = os.getenv("HOME")
 local empty = [[]]
-db.session_directory = "C:/Users/23792/.cache/DSSession"
+db.session_directory = "C:/Users/liuyuzhen/.cache/DSSession"
 db.session_verbose = false
 db.custom_header = {
 	empty,

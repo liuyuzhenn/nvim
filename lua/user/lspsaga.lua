@@ -57,10 +57,12 @@ saga.setup({
 	},
 })
 
-keymap("n", "gh", "<cmd>Lspsaga lsp_finder<CR>", { silent = true })
+keymap("n", "gh", "<cmd>Lspsaga finder<CR>", { silent = true })
 keymap("n", "gp", "<cmd>Lspsaga peek_definition<CR>", { silent = true })
 keymap("n", "gd", "<cmd>Lspsaga goto_definition<CR>", { silent = true })
 keymap("n", "<leader>o", "<cmd>Lspsaga outline<CR>", { silent = true })
+keymap("n", "<leader>e", "<cmd>Lspsaga show_line_diagnostics<CR>", { silent = true })
+keymap("n", "<leader>q", "<cmd>Lspsaga show_buf_diagnostics<CR>", { silent = true })
 keymap("n", "K", "<cmd>Lspsaga hover_doc<CR>", { silent = true })
 
 -- Code action
@@ -69,8 +71,5 @@ keymap({ "n", "v" }, "<leader>aa", "<cmd>Lspsaga code_action<CR>", { silent = tr
 -- Rename
 keymap("n", "<leader>r", "<cmd>Lspsaga rename<CR>", { silent = true })
 
--- Show line diagnostics
-keymap("n", "<leader>cd", "<cmd>Lspsaga show_line_diagnostics<CR>", { silent = true })
--- keymap("n", "<leader>cd", "<cmd>Lspsaga show_cursor_diagnostics<CR>", { silent = true })
 keymap("n", "[e", "<cmd>Lspsaga diagnostic_jump_prev<CR>", { silent = true })
 keymap("n", "]e", "<cmd>Lspsaga diagnostic_jump_next<CR>", { silent = true })

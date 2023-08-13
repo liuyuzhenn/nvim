@@ -53,13 +53,13 @@ nnoremap <silent> sk :call <SID>split('k')<CR>
 xnoremap <silent> sk :call <SID>split('k')<CR>
 
 
- "nnoremap <silent> <left> :<C-u>call VSCodeNotify('workbench.action.evenEditorWidths')<CR>
- "xnoremap <silent> <left> :<C-u>call VSCodeNotify('workbench.action.evenEditorWidths')<CR>
+" nnoremap <silent> <C-w>= :<C-u>call VSCodeNotify('workbench.action.evenEditorWidths')<CR>
+" xnoremap <silent> <C-w>= :<C-u>call VSCodeNotify('workbench.action.evenEditorWidths')<CR>
 
-"nnoremap <silent> <right>+ :<C-u>call <SID>manageEditorSize(v:count, 'increase')<CR>
-"xnoremap <silent> <right>+ :<C-u>call <SID>manageEditorSize(v:count, 'increase')<CR>
-"nnoremap <silent> <left>- :<C-u>call <SID>manageEditorSize(v:count, 'decrease')<CR>
-"xnoremap <silent> <left>- :<C-u>call <SID>manageEditorSize(v:count, 'decrease')<CR>
+nnoremap <silent> <C-w>+ :<C-u>call <SID>manageEditorSize(v:count, 'increase')<CR>
+xnoremap <silent> <C-w>+ :<C-u>call <SID>manageEditorSize(v:count, 'increase')<CR>
+nnoremap <silent> <C-w>- :<C-u>call <SID>manageEditorSize(v:count, 'decrease')<CR>
+xnoremap <silent> <C-w>- :<C-u>call <SID>manageEditorSize(v:count, 'decrease')<CR>
 
 " Better Navigation
 nnoremap <silent> <C-j> :call VSCodeNotify('workbench.action.navigateDown')<CR>
@@ -71,8 +71,7 @@ xnoremap <silent> <C-h> :call VSCodeNotify('workbench.action.navigateLeft')<CR>
 nnoremap <silent> <C-l> :call VSCodeNotify('workbench.action.navigateRight')<CR>
 xnoremap <silent> <C-l> :call VSCodeNotify('workbench.action.navigateRight')<CR>
 
-nnoremap <silent> <leader>m :<C-u>call VSCodeNotify('workbench.action.toggleEditorWidths')<CR>
-
+" nnoremap <silent> <C-w>_ :<C-u>call VSCodeNotify('workbench.action.toggleEditorWidths')<CR>
 
 " nnoremap <silent> <Space> :call VSCodeNotify('whichkey.show')<CR>
 " xnoremap <silent> <Space> :call VSCodeNotify('whichkey.show')<CR>

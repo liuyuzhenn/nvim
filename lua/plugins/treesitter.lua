@@ -13,8 +13,6 @@ return {
 				"python",
 				"cpp",
 				"c",
-				"bibtex",
-				"latex",
 				"lua"
 			},
 
@@ -36,6 +34,5 @@ return {
 				additional_vim_regex_highlighting = false,
 			},
 		}
-
 	end
 }

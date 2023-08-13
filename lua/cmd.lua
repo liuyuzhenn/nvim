@@ -26,6 +26,7 @@ augroup _fold_bug_solution
 	autocmd BufRead * autocmd BufWinEnter * ++once normal! zx
 augroup end
 
+
 ]])
 
 vim.api.nvim_create_autocmd("TextYankPost", {

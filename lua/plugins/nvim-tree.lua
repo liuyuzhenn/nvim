@@ -119,15 +119,6 @@ return {
 			view = {
 				width = 25,
 				adaptive_size = false,
-				hide_root_folder = false,
-				mappings = {
-					list = {
-						{ key = "u", action = "dir_up" },
-						{ key = { "v" }, action = "vsplit" },
-						{ key = { "l" }, action = "edit" },
-						{ key = "cd", action = "cd" },
-					},
-				},
 				float = {
 					enable = false,
 					quit_on_focus_loss = false,

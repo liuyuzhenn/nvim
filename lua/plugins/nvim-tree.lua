@@ -120,7 +120,7 @@ return {
 				width = 25,
 				adaptive_size = false,
 				float = {
-					enable = false,
+					enable = true,
 					quit_on_focus_loss = false,
 					open_win_config = {
 						relative = "editor",
